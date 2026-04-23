@@ -1,0 +1,118 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { readingTime } from '@/utils/readingTime';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Build unique months list (sorted newest first)
+const months = [...new Set(
+  posts.map(p => p.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }))
+)];
+---
+
+<BaseLayout title="Articles" description="All trading articles by Seal">
+  <h1 class="text-2xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">Articles</h1>
+
+  <!-- Month filter -->
+  <div class="flex flex-wrap gap-2 mb-8" id="filter-bar">
+    <button
+      data-month="all"
+      class="filter-btn active text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-900 dark:border-zinc-100 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900"
+    >
+      All
+    </button>
+    {months.map(month => (
+      <button
+        data-month={month}
+        class="filter-btn text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-500 dark:hover:border-zinc-400"
+      >
+        {month}
+      </button>
+    ))}
+  </div>
+
+  {posts.length === 0 ? (
+    <p class="text-zinc-500">No articles yet.</p>
+  ) : (
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="cards-grid">
+      {posts.map((post) => (
+        <div
+          class="group relative flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900"
+          data-month={post.data.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+        >
+          <a href={`/blog/${post.slug}`} class="absolute inset-0 z-10" aria-label={post.data.title}></a>
+
+          <div class="w-full h-44 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+            {post.data.heroImage ? (
+              <img
+                src={post.data.heroImage}
+                alt={post.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <div class="w-full h-full flex items-center justify-center">
+                <span class="font-mono text-4xl text-zinc-300 dark:text-zinc-600">S</span>
+              </div>
+            )}
+          </div>
+
+          <div class="relative p-4 flex flex-col flex-1">
+            {post.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mb-2">
+                {post.data.tags.map((tag: string) => (
+                  <a href={`/tags/${tag}`} class="relative z-20 text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors">
+                    {tag}
+                  </a>
+                ))}
+              </div>
+            )}
+            <h2 class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-snug mb-1">
+              {post.data.title}
+            </h2>
+            {post.data.description && (
+              <p class="text-zinc-500 dark:text-zinc-400 text-sm line-clamp-2">{post.data.description}</p>
+            )}
+            <div class="flex items-center justify-between mt-auto pt-3">
+              <p class="text-zinc-400 dark:text-zinc-600 text-xs font-mono">
+                {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </p>
+              <span class="text-zinc-400 dark:text-zinc-600 text-xs">{readingTime(post.body)}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('#cards-grid a');
+
+  const activeClass = ['border-zinc-900', 'dark:border-zinc-100', 'bg-zinc-900', 'dark:bg-zinc-100', 'text-white', 'dark:text-zinc-900'];
+  const inactiveClass = ['border-zinc-300', 'dark:border-zinc-700', 'text-zinc-600', 'dark:text-zinc-400'];
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const month = btn.dataset.month!;
+
+      // Update button styles
+      buttons.forEach(b => {
+        b.classList.remove(...activeClass);
+        b.classList.add(...inactiveClass);
+      });
+      btn.classList.remove(...inactiveClass);
+      btn.classList.add(...activeClass);
+
+      // Filter cards
+      cards.forEach(card => {
+        const cardMonth = card.dataset.month!;
+        const show = month === 'all' || cardMonth === month;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

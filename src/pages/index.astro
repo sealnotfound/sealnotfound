@@ -1,0 +1,131 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { readingTime } from '@/utils/readingTime';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <!-- Hero banner -->
+  <section class="mb-14 -mx-4 rounded-2xl overflow-hidden" style="
+    background-color: #e8548a;
+    background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='8' y='28' font-size='18' opacity='0.25'%3E🌸%3C/text%3E%3Ctext x='44' y='60' font-size='16' opacity='0.2'%3E🌷%3C/text%3E%3Ctext x='2' y='68' font-size='13' opacity='0.18'%3E✿%3C/text%3E%3Ctext x='56' y='22' font-size='14' opacity='0.2'%3E🌸%3C/text%3E%3C/svg%3E&quot;);
+    background-repeat: repeat;
+  ">
+    <div class="px-4 py-6 sm:px-8 sm:py-10 flex items-center gap-4 sm:gap-5">
+      <!-- Avatar -->
+      <div class="shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-white/40 shadow-lg bg-white/20">
+        <img
+          src="/avatars/avatarApril26.jpg"
+          alt="Seal avatar"
+          class="w-full h-full object-cover"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:2rem;line-height:5rem;display:block;text-align:center\'>🦭</span>'"
+        />
+      </div>
+
+      <!-- Name + bio -->
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-white drop-shadow font-mono tracking-tight">Seal</h1>
+        <p class="text-white/80 text-sm mt-1 max-w-xs">
+          Day trader. Writing about futures markets, geopolitics, and what actually works.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social links -->
+  <div class="flex flex-col items-center mb-14">
+    <p class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest mb-3">Coming soon</p>
+    <div class="flex flex-wrap justify-center gap-3">
+    <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
+      <!-- Telegram icon -->
+      <svg class="w-4 h-4 text-sky-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.48 14.070l-2.95-.924c-.643-.204-.657-.643.136-.953l11.522-4.44c.535-.194 1.003.13.374.495z"/>
+      </svg>
+      Telegram channel
+    </a>
+    <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
+      <!-- Telegram DM icon -->
+      <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.48 14.070l-2.95-.924c-.643-.204-.657-.643.136-.953l11.522-4.44c.535-.194 1.003.13.374.495z"/>
+      </svg>
+      Personal DM
+    </a>
+    <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
+      <!-- YouTube icon -->
+      <svg class="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+      YouTube
+    </a>
+    <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
+      <!-- X / Twitter icon -->
+      <svg class="w-4 h-4 text-zinc-900 dark:text-zinc-100" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      X / Twitter
+    </a>
+    </div>
+  </div>
+
+  {posts.length > 0 && (
+    <section>
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6">Recent articles</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {posts.map((post) => (
+          <div class="group relative flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
+            <!-- Stretched link covers whole card -->
+            <a href={`/blog/${post.slug}`} class="absolute inset-0 z-10" aria-label={post.data.title}></a>
+
+            <div class="w-full h-40 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+              {post.data.heroImage ? (
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center">
+                  <span class="font-mono text-4xl text-zinc-300 dark:text-zinc-600">S</span>
+                </div>
+              )}
+            </div>
+
+            <div class="relative p-4 flex flex-col flex-1">
+              {post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mb-2">
+                  {post.data.tags.map((tag: string) => (
+                    <a href={`/tags/${tag}`} class="relative z-20 text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-900/50 transition-colors">
+                      {tag}
+                    </a>
+                  ))}
+                </div>
+              )}
+              <h2 class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-snug mb-1">
+                {post.data.title}
+              </h2>
+              {post.data.description && (
+                <p class="text-zinc-500 dark:text-zinc-400 text-sm line-clamp-2">{post.data.description}</p>
+              )}
+              <div class="flex items-center justify-between mt-auto pt-3">
+                <p class="text-zinc-400 dark:text-zinc-600 text-xs font-mono">
+                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </p>
+                <span class="text-zinc-400 dark:text-zinc-600 text-xs">{readingTime(post.body)}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8">
+        <a href="/blog" class="text-amber-500 dark:text-amber-400 text-sm hover:underline">All articles →</a>
+      </div>
+    </section>
+  )}
+</BaseLayout>
