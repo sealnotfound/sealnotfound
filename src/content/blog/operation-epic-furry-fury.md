@@ -1,5 +1,5 @@
 ---
-title: "Operation Epic Furry Fury"
+title: "Operation Epic <s>Furry</s> Fury"
 description: "Или же «Тегеран за 3 часа» — разбираем удары по Ирану, реакцию рынков и что будет дальше."
 pubDate: 2026-02-28
 tags: ["Geopolitics", "Iran", "Oil"]

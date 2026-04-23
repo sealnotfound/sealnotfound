@@ -22,6 +22,17 @@ const { title, description = 'Trading articles by Seal' } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <title>{title} — Seal</title>
+
+    <!-- Hide Google Translate toolbar -->
+    <style>
+      .goog-te-banner-frame,
+      #goog-gt-tt,
+      .goog-te-balloon-frame,
+      .goog-te-menu-frame { display: none !important; }
+      body { top: 0 !important; }
+      .skiptranslate > iframe { display: none !important; }
+    </style>
+
     <script is:inline>
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
@@ -38,128 +49,87 @@ const { title, description = 'Trading articles by Seal' } = Astro.props;
     </main>
     <Footer />
 
+    <!-- Google Translate hidden widget -->
+    <div id="google_translate_element" style="display:none"></div>
+
     <script is:inline>
+      // Google Translate callback (must be global before script loads)
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,ru,uk,de',
+          autoDisplay: false,
+        }, 'google_translate_element');
+      }
+
+      // Keep __T and __tFmt for dynamic JS-generated strings (e.g. search count)
       window.__T = {
         en: {
-          'nav.home': 'Home',
-          'nav.articles': 'Articles',
-          'nav.search': 'Search',
-          'home.coming_soon': 'Coming soon',
-          'home.recent': 'Recent articles',
-          'home.all': 'All articles →',
-          'blog.title': 'Articles',
-          'blog.empty': 'No articles yet.',
-          'blog.all': 'All',
-          'search.title': 'Search',
-          'search.placeholder': 'Search articles...',
-          'search.empty': 'No articles found.',
           'search.total': '{n} articles total',
           'search.filtered': '{n} of {total} articles',
-          'post.older': '← Older',
-          'post.newer': 'Newer →',
-          'post.back': '← All articles',
-          'tag.back': '← All articles',
         },
         ru: {
-          'nav.home': 'Главная',
-          'nav.articles': 'Статьи',
-          'nav.search': 'Поиск',
-          'home.coming_soon': 'Скоро',
-          'home.recent': 'Последние статьи',
-          'home.all': 'Все статьи →',
-          'blog.title': 'Статьи',
-          'blog.empty': 'Статей пока нет.',
-          'blog.all': 'Все',
-          'search.title': 'Поиск',
-          'search.placeholder': 'Поиск статей...',
-          'search.empty': 'Статьи не найдены.',
           'search.total': '{n} статей всего',
           'search.filtered': '{n} из {total} статей',
-          'post.older': '← Старше',
-          'post.newer': 'Новее →',
-          'post.back': '← Все статьи',
-          'tag.back': '← Все статьи',
         },
         uk: {
-          'nav.home': 'Головна',
-          'nav.articles': 'Статті',
-          'nav.search': 'Пошук',
-          'home.coming_soon': 'Незабаром',
-          'home.recent': 'Останні статті',
-          'home.all': 'Всі статті →',
-          'blog.title': 'Статті',
-          'blog.empty': 'Статей поки немає.',
-          'blog.all': 'Всі',
-          'search.title': 'Пошук',
-          'search.placeholder': 'Пошук статей...',
-          'search.empty': 'Статей не знайдено.',
           'search.total': '{n} статей загалом',
           'search.filtered': '{n} з {total} статей',
-          'post.older': '← Старіше',
-          'post.newer': 'Новіше →',
-          'post.back': '← Всі статті',
-          'tag.back': '← Всі статті',
         },
         de: {
-          'nav.home': 'Start',
-          'nav.articles': 'Artikel',
-          'nav.search': 'Suche',
-          'home.coming_soon': 'Demnächst',
-          'home.recent': 'Neueste Artikel',
-          'home.all': 'Alle Artikel →',
-          'blog.title': 'Artikel',
-          'blog.empty': 'Noch keine Artikel.',
-          'blog.all': 'Alle',
-          'search.title': 'Suche',
-          'search.placeholder': 'Artikel suchen...',
-          'search.empty': 'Keine Artikel gefunden.',
           'search.total': '{n} Artikel gesamt',
           'search.filtered': '{n} von {total} Artikeln',
-          'post.older': '← Älter',
-          'post.newer': 'Neuer →',
-          'post.back': '← Alle Artikel',
-          'tag.back': '← Alle Artikel',
         },
       };
 
       window.__tFmt = function(key, vars) {
-        const lang = localStorage.getItem('lang') || 'en';
-        const str = (window.__T[lang] && window.__T[lang][key]) || window.__T.en[key] || key;
+        var lang = localStorage.getItem('lang') || 'en';
+        var dict = window.__T[lang] || window.__T.en;
+        var str = dict[key] || window.__T.en[key] || key;
         if (!vars) return str;
         return str.replace(/{(\w+)}/g, function(_, k) { return vars[k] != null ? vars[k] : ''; });
       };
 
-      function applyTranslations() {
-        const lang = localStorage.getItem('lang') || 'en';
-        const dict = window.__T[lang] || window.__T.en;
-
-        document.querySelectorAll('[data-i18n]').forEach(function(el) {
-          const key = el.getAttribute('data-i18n');
-          if (dict[key]) el.textContent = dict[key];
-        });
-
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
-          const key = el.getAttribute('data-i18n-placeholder');
-          if (dict[key]) el.placeholder = dict[key];
-        });
-
-        document.querySelectorAll('[data-lang-btn]').forEach(function(btn) {
-          const active = btn.getAttribute('data-lang-btn') === lang;
-          btn.classList.toggle('text-amber-500', active);
-          btn.classList.toggle('dark:text-amber-400', active);
-          btn.classList.toggle('text-zinc-400', !active);
-          btn.classList.toggle('dark:text-zinc-600', !active);
-        });
-
-        document.documentElement.lang = lang;
-      }
-
       window.__setLang = function(lang) {
         localStorage.setItem('lang', lang);
-        applyTranslations();
+
+        if (lang === 'en') {
+          var expiry = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
+          document.cookie = 'googtrans=; ' + expiry + '; path=/';
+          document.cookie = 'googtrans=; ' + expiry + '; path=/; domain=.' + location.hostname;
+          window.location.reload();
+          return;
+        }
+
+        document.cookie = 'googtrans=/en/' + lang + '; path=/';
+        document.cookie = 'googtrans=/en/' + lang + '; path=/; domain=.' + location.hostname;
+
+        var select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = lang;
+          var evt = document.createEvent('HTMLEvents');
+          evt.initEvent('change', false, true);
+          select.dispatchEvent(evt);
+        } else {
+          window.location.reload();
+        }
       };
 
-      document.addEventListener('DOMContentLoaded', applyTranslations);
+      document.addEventListener('DOMContentLoaded', function() {
+        var lang = localStorage.getItem('lang') || 'en';
+        document.documentElement.lang = lang;
+
+        // Highlight active lang option in dropdown
+        document.querySelectorAll('[data-lang-option]').forEach(function(btn) {
+          var isActive = btn.getAttribute('data-lang-option') === lang;
+          btn.classList.toggle('font-semibold', isActive);
+          btn.classList.toggle('text-amber-500', isActive);
+          btn.classList.toggle('dark:text-amber-400', isActive);
+        });
+      });
     </script>
+
+    <!-- Load Google Translate async -->
+    <script async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

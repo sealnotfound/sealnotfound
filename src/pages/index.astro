@@ -29,7 +29,7 @@ const posts = (await getCollection('blog'))
 
       <!-- Name + bio -->
       <div>
-        <h1 class="text-2xl sm:text-3xl font-bold text-white drop-shadow font-mono tracking-tight">Seal</h1>
+        <h1 class="text-2xl sm:text-3xl font-bold text-white drop-shadow font-mono tracking-tight notranslate" translate="no">Seal</h1>
         <p class="text-white/80 text-sm mt-1 max-w-xs">
           Day trader. Writing about futures markets, geopolitics, and what actually works.
         </p>
@@ -80,7 +80,7 @@ const posts = (await getCollection('blog'))
         {posts.map((post) => (
           <div class="group relative flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
             <!-- Stretched link covers whole card -->
-            <a href={`/blog/${post.slug}`} class="absolute inset-0 z-10" aria-label={post.data.title}></a>
+            <a href={`/blog/${post.slug}`} class="absolute inset-0 z-10" aria-label={post.data.title.replace(/<[^>]+>/g, '')}></a>
 
             <div class="w-full h-40 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
               {post.data.heroImage ? (
@@ -106,9 +106,7 @@ const posts = (await getCollection('blog'))
                   ))}
                 </div>
               )}
-              <h2 class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-snug mb-1">
-                {post.data.title}
-              </h2>
+              <h2 class="font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors leading-snug mb-1" set:html={post.data.title} />
               {post.data.description && (
                 <p class="text-zinc-500 dark:text-zinc-400 text-sm line-clamp-2">{post.data.description}</p>
               )}
