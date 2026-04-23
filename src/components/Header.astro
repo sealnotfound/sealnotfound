@@ -8,22 +8,24 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="border-b border-zinc-200 dark:border-zinc-800">
-  <div class="relative">
-    <span class="absolute select-none pointer-events-none" style="top:6px;left:3%;font-size:0.85rem;opacity:0.18;transform:rotate(-15deg)">🌸</span>
-    <span class="absolute select-none pointer-events-none" style="top:10px;left:9%;font-size:0.7rem;opacity:0.15;transform:rotate(10deg)">✦</span>
-    <span class="absolute select-none pointer-events-none" style="top:5px;left:16%;font-size:0.8rem;opacity:0.14;transform:rotate(-5deg)">🌷</span>
-    <span class="absolute select-none pointer-events-none" style="top:8px;left:24%;font-size:0.7rem;opacity:0.13;transform:rotate(20deg)">✿</span>
-    <span class="absolute select-none pointer-events-none" style="top:6px;left:32%;font-size:0.85rem;opacity:0.15;transform:rotate(-10deg)">🌸</span>
-    <span class="absolute select-none pointer-events-none" style="bottom:5px;left:12%;font-size:0.75rem;opacity:0.13;transform:rotate(8deg)">🌷</span>
-    <span class="absolute select-none pointer-events-none" style="bottom:6px;left:26%;font-size:0.7rem;opacity:0.12;transform:rotate(-12deg)">✦</span>
-    <span class="absolute select-none pointer-events-none" style="top:7px;right:32%;font-size:0.8rem;opacity:0.14;transform:rotate(5deg)">✿</span>
-    <span class="absolute select-none pointer-events-none" style="bottom:5px;right:28%;font-size:0.85rem;opacity:0.13;transform:rotate(-8deg)">🌸</span>
-    <span class="absolute select-none pointer-events-none" style="top:6px;right:20%;font-size:0.7rem;opacity:0.15;transform:rotate(15deg)">🌷</span>
-    <span class="absolute select-none pointer-events-none" style="bottom:7px;right:14%;font-size:0.75rem;opacity:0.12;transform:rotate(-5deg)">✦</span>
-    <span class="absolute select-none pointer-events-none" style="top:8px;right:7%;font-size:0.8rem;opacity:0.14;transform:rotate(12deg)">🌸</span>
+<header class="border-b border-zinc-200 dark:border-zinc-800 relative z-50">
+  <!-- Flowers: own overflow-hidden layer so they don't clip the dropdown -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <span class="absolute select-none" style="top:6px;left:3%;font-size:0.85rem;opacity:0.18;transform:rotate(-15deg)">🌸</span>
+    <span class="absolute select-none" style="top:10px;left:9%;font-size:0.7rem;opacity:0.15;transform:rotate(10deg)">✦</span>
+    <span class="absolute select-none" style="top:5px;left:16%;font-size:0.8rem;opacity:0.14;transform:rotate(-5deg)">🌷</span>
+    <span class="absolute select-none" style="top:8px;left:24%;font-size:0.7rem;opacity:0.13;transform:rotate(20deg)">✿</span>
+    <span class="absolute select-none" style="top:6px;left:32%;font-size:0.85rem;opacity:0.15;transform:rotate(-10deg)">🌸</span>
+    <span class="absolute select-none" style="bottom:5px;left:12%;font-size:0.75rem;opacity:0.13;transform:rotate(8deg)">🌷</span>
+    <span class="absolute select-none" style="bottom:6px;left:26%;font-size:0.7rem;opacity:0.12;transform:rotate(-12deg)">✦</span>
+    <span class="absolute select-none" style="top:7px;right:32%;font-size:0.8rem;opacity:0.14;transform:rotate(5deg)">✿</span>
+    <span class="absolute select-none" style="bottom:5px;right:28%;font-size:0.85rem;opacity:0.13;transform:rotate(-8deg)">🌸</span>
+    <span class="absolute select-none" style="top:6px;right:20%;font-size:0.7rem;opacity:0.15;transform:rotate(15deg)">🌷</span>
+    <span class="absolute select-none" style="bottom:7px;right:14%;font-size:0.75rem;opacity:0.12;transform:rotate(-5deg)">✦</span>
+    <span class="absolute select-none" style="top:8px;right:7%;font-size:0.8rem;opacity:0.14;transform:rotate(12deg)">🌸</span>
+  </div>
 
-    <div class="relative max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
+  <div class="relative max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
       <a href="/" translate="no" class="notranslate font-mono font-medium text-amber-500 dark:text-amber-400 tracking-tight hover:text-amber-400 dark:hover:text-amber-300 transition-colors">
         Seal
       </a>
@@ -124,7 +126,6 @@ const currentPath = Astro.url.pathname;
         </button>
       </div>
     </div>
-  </div>
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden sm:hidden border-t border-zinc-100 dark:border-zinc-800">
