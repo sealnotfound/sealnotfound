@@ -1,15 +1,14 @@
 ---
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Articles' },
-  { href: '/search', label: 'Search' },
+  { href: '/', label: 'Home', key: 'nav.home' },
+  { href: '/blog', label: 'Articles', key: 'nav.articles' },
+  { href: '/search', label: 'Search', key: 'nav.search' },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="border-b border-zinc-200 dark:border-zinc-800">
-  <!-- Main row with decorative pattern -->
   <div class="relative overflow-hidden">
     <span class="absolute select-none pointer-events-none" style="top:6px;left:3%;font-size:0.85rem;opacity:0.18;transform:rotate(-15deg)">🌸</span>
     <span class="absolute select-none pointer-events-none" style="top:10px;left:9%;font-size:0.7rem;opacity:0.15;transform:rotate(10deg)">✦</span>
@@ -29,12 +28,13 @@ const currentPath = Astro.url.pathname;
         Seal
       </a>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <!-- Desktop nav -->
         <nav class="hidden sm:flex items-center gap-6">
-          {navLinks.map(({ href, label }) => (
+          {navLinks.map(({ href, label, key }) => (
             <a
               href={href}
+              data-i18n={key}
               class={`text-sm transition-colors ${
                 currentPath === href
                   ? 'text-zinc-900 dark:text-zinc-100'
@@ -45,6 +45,19 @@ const currentPath = Astro.url.pathname;
             </a>
           ))}
         </nav>
+
+        <!-- Language switcher (desktop) -->
+        <div class="hidden sm:flex items-center gap-1 font-mono text-xs">
+          {['en','ru','uk','de'].map(lang => (
+            <button
+              data-lang-btn={lang}
+              onclick={`window.__setLang('${lang}')`}
+              class="px-1 py-0.5 rounded transition-colors text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300 uppercase"
+            >
+              {lang}
+            </button>
+          ))}
+        </div>
 
         <!-- Theme toggle -->
         <button
@@ -79,20 +92,21 @@ const currentPath = Astro.url.pathname;
           aria-label="Toggle menu"
           class="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none"
         >
-          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all" id="ham-top"></span>
-          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all" id="ham-mid"></span>
-          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all" id="ham-bot"></span>
+          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
+          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
+          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile nav dropdown -->
+  <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden sm:hidden border-t border-zinc-100 dark:border-zinc-800">
     <nav class="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
-      {navLinks.map(({ href, label }) => (
+      {navLinks.map(({ href, label, key }) => (
         <a
           href={href}
+          data-i18n={key}
           class={`py-2 text-sm transition-colors ${
             currentPath === href
               ? 'text-zinc-900 dark:text-zinc-100 font-medium'
@@ -102,6 +116,18 @@ const currentPath = Astro.url.pathname;
           {label}
         </a>
       ))}
+      <!-- Language switcher (mobile) -->
+      <div class="flex items-center gap-2 pt-2 mt-1 border-t border-zinc-100 dark:border-zinc-800 font-mono text-xs">
+        {['en','ru','uk','de'].map(lang => (
+          <button
+            data-lang-btn={lang}
+            onclick={`window.__setLang('${lang}')`}
+            class="px-2 py-1 rounded transition-colors text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300 uppercase"
+          >
+            {lang}
+          </button>
+        ))}
+      </div>
     </nav>
   </div>
 </header>

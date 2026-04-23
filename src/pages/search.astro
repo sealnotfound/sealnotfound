@@ -18,7 +18,7 @@ const posts = (await getCollection('blog'))
 ---
 
 <BaseLayout title="Search">
-  <h1 class="text-2xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">Search</h1>
+  <h1 class="text-2xl font-bold mb-6 text-zinc-900 dark:text-zinc-100" data-i18n="search.title">Search</h1>
 
   <div class="relative mb-8">
     <input
@@ -26,6 +26,7 @@ const posts = (await getCollection('blog'))
       type="text"
       placeholder="Search articles..."
       autocomplete="off"
+      data-i18n-placeholder="search.placeholder"
       class="w-full px-4 py-3 pl-10 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none focus:border-amber-400 dark:focus:border-amber-500 transition-colors"
     />
     <svg class="absolute left-3 top-3.5 w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,10 +34,10 @@ const posts = (await getCollection('blog'))
     </svg>
   </div>
 
-  <p id="search-count" class="text-xs text-zinc-400 dark:text-zinc-600 mb-6 font-mono">{posts.length} articles total</p>
+  <p id="search-count" class="text-xs text-zinc-400 dark:text-zinc-600 mb-6 font-mono"></p>
 
   <div id="results-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-  <p id="no-results" class="hidden text-zinc-500 dark:text-zinc-400">No articles found.</p>
+  <p id="no-results" class="hidden text-zinc-500 dark:text-zinc-400" data-i18n="search.empty">No articles found.</p>
 </BaseLayout>
 
 <script define:vars={{ posts }}>
@@ -45,9 +46,13 @@ const posts = (await getCollection('blog'))
   const count = document.getElementById('search-count');
   const noResults = document.getElementById('no-results');
 
+  function t(key, vars) {
+    return window.__tFmt ? window.__tFmt(key, vars) : key;
+  }
+
   function renderCard(post) {
     const tags = post.tags.length
-      ? `<div class="flex flex-wrap gap-1.5 mb-2">${post.tags.map(t => `<a href="/tags/${t}" class="relative z-20 text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">${t}</a>`).join('')}</div>`
+      ? `<div class="flex flex-wrap gap-1.5 mb-2">${post.tags.map(tag => `<a href="/tags/${tag}" class="relative z-20 text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">${tag}</a>`).join('')}</div>`
       : '';
     const image = post.heroImage
       ? `<img src="${post.heroImage}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />`
@@ -73,23 +78,25 @@ const posts = (await getCollection('blog'))
     `;
   }
 
-  function render(filtered) {
+  function render(filtered, isFiltered) {
     grid.innerHTML = filtered.map(renderCard).join('');
-    count.textContent = `${filtered.length} of ${posts.length} articles`;
+    count.textContent = isFiltered
+      ? t('search.filtered', { n: filtered.length, total: posts.length })
+      : t('search.total', { n: posts.length });
     noResults.classList.toggle('hidden', filtered.length > 0);
     grid.classList.toggle('hidden', filtered.length === 0);
   }
 
-  render(posts);
+  render(posts, false);
 
   input.addEventListener('input', () => {
     const q = input.value.toLowerCase().trim();
-    if (!q) { render(posts); return; }
+    if (!q) { render(posts, false); return; }
     const filtered = posts.filter(p =>
       p.title.toLowerCase().includes(q) ||
       p.description.toLowerCase().includes(q) ||
-      p.tags.some(t => t.toLowerCase().includes(q))
+      p.tags.some(tag => tag.toLowerCase().includes(q))
     );
-    render(filtered);
+    render(filtered, true);
   });
 </script>

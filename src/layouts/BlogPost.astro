@@ -63,17 +63,17 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <div class="flex-1">
         {prevPost ? (
           <a href={`/blog/${prevPost.slug}`} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">← Older</span>
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest" data-i18n="post.older">← Older</span>
             <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2">{prevPost.title}</p>
           </a>
         ) : (
-          <a href="/blog" class="text-amber-500 dark:text-amber-400 hover:underline text-sm">← All articles</a>
+          <a href="/blog" class="text-amber-500 dark:text-amber-400 hover:underline text-sm" data-i18n="post.back">← All articles</a>
         )}
       </div>
       <div class="flex-1 text-right">
         {nextPost && (
           <a href={`/blog/${nextPost.slug}`} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">Newer →</span>
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest" data-i18n="post.newer">Newer →</span>
             <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2">{nextPost.title}</p>
           </a>
         )}

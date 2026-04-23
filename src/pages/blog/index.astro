@@ -14,13 +14,14 @@ const months = [...new Set(
 ---
 
 <BaseLayout title="Articles" description="All trading articles by Seal">
-  <h1 class="text-2xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">Articles</h1>
+  <h1 class="text-2xl font-bold mb-6 text-zinc-900 dark:text-zinc-100" data-i18n="blog.title">Articles</h1>
 
   <!-- Month filter -->
   <div class="flex flex-wrap gap-2 mb-8" id="filter-bar">
     <button
       data-month="all"
       class="filter-btn active text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-900 dark:border-zinc-100 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900"
+      data-i18n="blog.all"
     >
       All
     </button>
@@ -35,7 +36,7 @@ const months = [...new Set(
   </div>
 
   {posts.length === 0 ? (
-    <p class="text-zinc-500">No articles yet.</p>
+    <p class="text-zinc-500" data-i18n="blog.empty">No articles yet.</p>
   ) : (
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="cards-grid">
       {posts.map((post) => (
