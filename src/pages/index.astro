@@ -8,9 +8,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+  .filter(p => p.slug.startsWith('en/') && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+  .slice(0, 6);
 ---
 
 <BaseLayout title={t('nav.home')}>
@@ -60,8 +60,10 @@ const posts = (await getCollection('blog'))
     <section>
       <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6">{t('home.recent')}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {posts.map(post => (
-          <BlogCard post={post} href={`/blog/${post.slug.replace('ru/', '')}`} tagBase="/tags/" />
+        {posts.map((post, i) => (
+          <div class={i >= 4 ? 'hidden sm:block' : ''}>
+            <BlogCard post={post} href={`/blog/${post.slug.replace('en/', '')}`} tagBase="/tags/" />
+          </div>
         ))}
       </div>
       <div class="mt-8">

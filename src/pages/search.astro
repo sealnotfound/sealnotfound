@@ -8,10 +8,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+  .filter(p => p.slug.startsWith('en/') && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .map(p => ({
-    slug: p.slug.replace('ru/', ''),
+    slug: p.slug.replace('en/', ''),
     title: p.data.title,
     description: p.data.description ?? '',
     tags: p.data.tags,

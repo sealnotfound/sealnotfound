@@ -8,7 +8,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+  .filter(p => p.slug.startsWith('en/') && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const months = [...new Set(
@@ -37,7 +37,7 @@ const months = [...new Set(
   ) : (
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="cards-grid">
       {posts.map(post => (
-        <BlogCard post={post} href={`/blog/${post.slug.replace('ru/', '')}`} tagBase="/tags/" />
+        <BlogCard post={post} href={`/blog/${post.slug.replace('en/', '')}`} tagBase="/tags/" />
       ))}
     </div>
   )}

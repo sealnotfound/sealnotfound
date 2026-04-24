@@ -6,7 +6,7 @@ export const languages = {
 } as const;
 
 export type Lang = keyof typeof languages;
-export const defaultLang: Lang = 'ru';
+export const defaultLang: Lang = 'en';
 
 export const ui = {
   ru: {
@@ -118,6 +118,7 @@ export function getLocalePath(lang: Lang, path: string): string {
   if (lang === defaultLang) return path;
   return `/${lang}${path}`;
 }
+
 
 export const langFlags: Record<Lang, string> = {
   ru: '🇷🇺',

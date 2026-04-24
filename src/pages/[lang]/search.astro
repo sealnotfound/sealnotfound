@@ -5,7 +5,7 @@ import { readingTime } from '@/utils/readingTime';
 import { useTranslations, type Lang } from '@/i18n/index';
 
 export async function getStaticPaths() {
-  return (['en', 'uk', 'de'] as Lang[]).map(lang => ({ params: { lang } }));
+  return (['ru', 'uk', 'de'] as Lang[]).map(lang => ({ params: { lang } }));
 }
 
 const { lang } = Astro.params as { lang: Lang };

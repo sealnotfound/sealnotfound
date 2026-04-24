@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 import { useTranslations, getLangFromUrl } from '@/i18n/index';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('blog')).filter(p => p.slug.startsWith('ru/'));
+  const posts = (await getCollection('blog')).filter(p => p.slug.startsWith('en/'));
   const tags = [...new Set(posts.flatMap(p => p.data.tags))];
   return tags.map(tag => ({ params: { tag }, props: { tag } }));
 }
@@ -15,7 +15,7 @@ const t = useTranslations(lang);
 const { tag } = Astro.props;
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft && p.data.tags.includes(tag))
+  .filter(p => p.slug.startsWith('en/') && !p.data.draft && p.data.tags.includes(tag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
@@ -28,7 +28,7 @@ const posts = (await getCollection('blog'))
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
     {posts.map(post => (
-      <BlogCard post={post} href={`/blog/${post.slug.replace('ru/', '')}`} tagBase="/tags/" />
+      <BlogCard post={post} href={`/blog/${post.slug.replace('en/', '')}`} tagBase="/tags/" />
     ))}
   </div>
 </BaseLayout>

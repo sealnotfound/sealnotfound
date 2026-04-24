@@ -5,11 +5,11 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const all = await getCollection('blog');
   const posts = all
-    .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+    .filter(p => p.slug.startsWith('en/') && !p.data.draft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   return posts.map((post) => ({
-    params: { slug: post.slug.replace('ru/', '') },
+    params: { slug: post.slug.replace('en/', '') },
     props: { post, allPosts: posts },
   }));
 }
@@ -28,8 +28,8 @@ const nextPost = allPosts[currentIndex - 1] ?? null;
   pubDate={post.data.pubDate}
   tags={post.data.tags}
   heroImage={post.data.heroImage}
-  prevPost={prevPost ? { slug: prevPost.slug.replace('ru/', ''), title: prevPost.data.title } : null}
-  nextPost={nextPost ? { slug: nextPost.slug.replace('ru/', ''), title: nextPost.data.title } : null}
+  prevPost={prevPost ? { slug: prevPost.slug.replace('en/', ''), title: prevPost.data.title } : null}
+  nextPost={nextPost ? { slug: nextPost.slug.replace('en/', ''), title: nextPost.data.title } : null}
 >
   <Content />
 </BlogPost>
