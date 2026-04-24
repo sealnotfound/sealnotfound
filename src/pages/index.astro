@@ -61,9 +61,7 @@ const posts = (await getCollection('blog'))
       <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6">{t('home.recent')}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {posts.map((post, i) => (
-          <div class={i >= 4 ? 'hidden sm:block' : ''}>
-            <BlogCard post={post} href={`/blog/${post.slug.replace('en/', '')}`} tagBase="/tags/" />
-          </div>
+          <BlogCard post={post} href={`/blog/${post.slug.replace('en/', '')}`} tagBase="/tags/" class={i >= 4 ? 'hidden sm:flex' : ''} />
         ))}
       </div>
       <div class="mt-8">
