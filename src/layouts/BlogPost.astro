@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { getLangFromUrl, useTranslations, type Lang } from '@/i18n/index';
+import { getLangFromUrl, useTranslations, defaultLang, type Lang } from '@/i18n/index';
 
 interface Props {
   title: string;
@@ -16,7 +16,7 @@ interface Props {
 const { title, description, pubDate, tags = [], heroImage, prevPost, nextPost, lang: propLang } = Astro.props;
 const lang = propLang ?? getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const base = lang === 'ru' ? '' : `/${lang}`;
+const base = lang === defaultLang ? '' : `/${lang}`;
 
 const plainTitle = title.replace(/<[^>]+>/g, '');
 const formattedDate = pubDate.toLocaleDateString('en-US', {
