@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations, languages, langFlags, type Lang } from '@/i18n/index';
+import { getLangFromUrl, useTranslations, languages, langFlags, defaultLang, type Lang } from '@/i18n/index';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,15 +10,15 @@ function getLangUrl(targetLang: Lang): string {
   const allLangs = Object.keys(languages) as Lang[];
   // Detect if current path starts with a lang prefix
   const parts = currentPath.replace(/^\//, '').split('/');
-  const hasPrefix = allLangs.includes(parts[0] as Lang) && parts[0] !== 'ru';
+  const hasPrefix = allLangs.includes(parts[0] as Lang) && parts[0] !== defaultLang;
   const pathWithoutLang = hasPrefix ? '/' + parts.slice(1).join('/') : currentPath;
   const cleanPath = pathWithoutLang === '' ? '/' : pathWithoutLang;
 
-  if (targetLang === 'ru') return cleanPath || '/';
+  if (targetLang === defaultLang) return cleanPath || '/';
   return `/${targetLang}${cleanPath === '/' ? '' : cleanPath}`;
 }
 
-const base = lang === 'ru' ? '' : `/${lang}`;
+const base = lang === defaultLang ? '' : `/${lang}`;
 
 const navLinks = [
   { href: `${base}/`, label: t('nav.home') },
