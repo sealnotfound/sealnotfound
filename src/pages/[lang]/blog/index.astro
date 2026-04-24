@@ -19,22 +19,34 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const years = [...new Set(posts.map(p => p.data.pubDate.getFullYear()))].sort((a, b) => b - a);
+
+const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 ---
 
 <BaseLayout title={t('blog.title')}>
   <h1 class="text-2xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">{t('blog.title')}</h1>
 
-  <div class="flex flex-wrap gap-2 mb-8" id="filter-bar">
-    <button data-year="all"
-      class="filter-btn active text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-900 dark:border-zinc-100 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900">
-      {t('blog.all')}
-    </button>
-    {years.map(year => (
-      <button data-year={year}
-        class="filter-btn text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-500 dark:hover:border-zinc-400">
-        {year}
+  <div class="flex flex-wrap items-center gap-2 mb-8">
+    <div class="flex flex-wrap gap-2" id="filter-bar">
+      <button data-year="all"
+        class="filter-btn active text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-900 dark:border-zinc-100 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900">
+        {t('blog.all')}
       </button>
-    ))}
+      {years.map(year => (
+        <button data-year={year}
+          class="filter-btn text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-500 dark:hover:border-zinc-400">
+          {year}
+        </button>
+      ))}
+    </div>
+
+    <select id="month-select"
+      class="text-xs font-medium px-3 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 focus:outline-none focus:border-amber-400 dark:focus:border-amber-500 transition-colors">
+      <option value="all">All months</option>
+      {monthNames.map((name, i) => (
+        <option value={i + 1}>{name}</option>
+      ))}
+    </select>
   </div>
 
   {posts.length === 0 ? (
@@ -50,17 +62,33 @@ const years = [...new Set(posts.map(p => p.data.pubDate.getFullYear()))].sort((a
 
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const monthSelect = document.getElementById('month-select') as HTMLSelectElement;
   const activeClass = ['border-zinc-900','dark:border-zinc-100','bg-zinc-900','dark:bg-zinc-100','text-white','dark:text-zinc-900'];
   const inactiveClass = ['border-zinc-300','dark:border-zinc-700','text-zinc-600','dark:text-zinc-400'];
+
+  let activeYear = 'all';
+  let activeMonth = 'all';
+
+  function applyFilters() {
+    document.querySelectorAll<HTMLElement>('[data-year]').forEach(card => {
+      if (card.closest('#filter-bar')) return;
+      const yearMatch = activeYear === 'all' || card.dataset.year === activeYear;
+      const monthMatch = activeMonth === 'all' || card.dataset.month === activeMonth;
+      card.style.display = (yearMatch && monthMatch) ? '' : 'none';
+    });
+  }
+
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const year = btn.dataset.year!;
+      activeYear = btn.dataset.year!;
       buttons.forEach(b => { b.classList.remove(...activeClass); b.classList.add(...inactiveClass); });
       btn.classList.remove(...inactiveClass); btn.classList.add(...activeClass);
-      document.querySelectorAll<HTMLElement>('[data-year]').forEach(card => {
-        if (card.closest('#filter-bar')) return;
-        card.style.display = (year === 'all' || card.dataset.year === year) ? '' : 'none';
-      });
+      applyFilters();
     });
+  });
+
+  monthSelect?.addEventListener('change', () => {
+    activeMonth = monthSelect.value;
+    applyFilters();
   });
 </script>
