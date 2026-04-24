@@ -1,15 +1,34 @@
 ---
-const navLinks = [
-  { href: '/', label: 'Home', key: 'nav.home' },
-  { href: '/blog', label: 'Articles', key: 'nav.articles' },
-  { href: '/search', label: 'Search', key: 'nav.search' },
-];
+import { getLangFromUrl, useTranslations, languages, langFlags, type Lang } from '@/i18n/index';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
+
+// Build URL for switching to a target language
+function getLangUrl(targetLang: Lang): string {
+  const allLangs = Object.keys(languages) as Lang[];
+  // Detect if current path starts with a lang prefix
+  const parts = currentPath.replace(/^\//, '').split('/');
+  const hasPrefix = allLangs.includes(parts[0] as Lang) && parts[0] !== 'ru';
+  const pathWithoutLang = hasPrefix ? '/' + parts.slice(1).join('/') : currentPath;
+  const cleanPath = pathWithoutLang === '' ? '/' : pathWithoutLang;
+
+  if (targetLang === 'ru') return cleanPath || '/';
+  return `/${targetLang}${cleanPath === '/' ? '' : cleanPath}`;
+}
+
+const base = lang === 'ru' ? '' : `/${lang}`;
+
+const navLinks = [
+  { href: `${base}/`, label: t('nav.home') },
+  { href: `${base}/blog`, label: t('nav.articles') },
+  { href: `${base}/search`, label: t('nav.search') },
+];
 ---
 
 <header class="border-b border-zinc-200 dark:border-zinc-800 relative z-50">
-  <!-- Flowers: own overflow-hidden layer so they don't clip the dropdown -->
+  <!-- Flowers layer -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
     <span class="absolute select-none" style="top:6px;left:3%;font-size:0.85rem;opacity:0.18;transform:rotate(-15deg)">🌸</span>
     <span class="absolute select-none" style="top:10px;left:9%;font-size:0.7rem;opacity:0.15;transform:rotate(10deg)">✦</span>
@@ -26,148 +45,122 @@ const currentPath = Astro.url.pathname;
   </div>
 
   <div class="relative max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
-      <a href="/" translate="no" class="notranslate font-mono font-medium text-amber-500 dark:text-amber-400 tracking-tight hover:text-amber-400 dark:hover:text-amber-300 transition-colors">
-        Seal
-      </a>
+    <a href={`${base}/`} translate="no" class="notranslate font-mono font-medium text-amber-500 dark:text-amber-400 tracking-tight hover:text-amber-400 dark:hover:text-amber-300 transition-colors">
+      Seal
+    </a>
 
-      <div class="flex items-center gap-3">
-        <!-- Desktop nav -->
-        <nav class="hidden sm:flex items-center gap-6">
-          {navLinks.map(({ href, label, key }) => (
-            <a
-              href={href}
-              data-i18n={key}
-              class={`text-sm transition-colors ${
-                currentPath === href
-                  ? 'text-zinc-900 dark:text-zinc-100'
-                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-              }`}
-            >
-              {label}
+    <div class="flex items-center gap-3">
+      <!-- Desktop nav -->
+      <nav class="hidden sm:flex items-center gap-6">
+        {navLinks.map(({ href, label }) => (
+          <a href={href}
+            class={`text-sm transition-colors ${
+              currentPath === href || (href !== `${base}/` && currentPath.startsWith(href))
+                ? 'text-zinc-900 dark:text-zinc-100'
+                : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+            }`}>
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Language dropdown -->
+      <div class="relative" id="lang-wrap">
+        <button id="lang-btn" aria-label="Select language"
+          class="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors p-1 rounded-lg">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+          </svg>
+          <svg class="w-3 h-3 transition-transform duration-200" id="lang-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <div id="lang-dropdown"
+          class="hidden absolute right-0 top-full mt-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg overflow-hidden z-50 min-w-[155px]">
+          {(Object.entries(languages) as [Lang, string][]).map(([code, label]) => (
+            <a href={getLangUrl(code)}
+              class={`flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors
+                ${code === lang
+                  ? 'font-semibold text-amber-500 dark:text-amber-400 bg-zinc-50 dark:bg-zinc-800'
+                  : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800'}`}>
+              <span class="text-base">{langFlags[code]}</span>
+              <span>{label}</span>
             </a>
           ))}
-        </nav>
-
-        <!-- Language dropdown -->
-        <div class="relative" id="lang-wrap">
-          <button
-            id="lang-btn"
-            aria-label="Select language"
-            class="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors p-1 rounded-lg"
-          >
-            <!-- Globe icon -->
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-            </svg>
-            <!-- Chevron -->
-            <svg class="w-3 h-3 transition-transform duration-200" id="lang-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-
-          <div
-            id="lang-dropdown"
-            class="hidden absolute right-0 top-full mt-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg overflow-hidden z-50 min-w-[155px]"
-          >
-            {[
-              { code: 'en', flag: '🇬🇧', label: 'English' },
-              { code: 'ru', flag: '🇷🇺', label: 'Русский' },
-              { code: 'uk', flag: '🇺🇦', label: 'Українська' },
-              { code: 'de', flag: '🇩🇪', label: 'Deutsch' },
-            ].map(({ code, flag, label }) => (
-              <button
-                onclick={`window.__setLang('${code}'); document.getElementById('lang-dropdown').classList.add('hidden'); document.getElementById('lang-chevron').classList.remove('rotate-180');`}
-                data-lang-option={code}
-                class="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
-              >
-                <span class="text-base">{flag}</span>
-                <span>{label}</span>
-              </button>
-            ))}
-          </div>
         </div>
-
-        <!-- Theme toggle -->
-        <button
-          id="theme-toggle"
-          aria-label="Toggle theme"
-          class="relative w-14 h-7 rounded-full bg-zinc-200 dark:bg-zinc-700 transition-colors duration-200 focus:outline-none"
-        >
-          <span
-            id="theme-toggle-thumb"
-            class="absolute top-1 left-1 w-5 h-5 rounded-full bg-white dark:bg-zinc-950 shadow transition-transform duration-200 dark:translate-x-7 flex items-center justify-center"
-          >
-            <svg id="icon-sun" class="w-3 h-3 text-amber-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5" stroke-width="2"/>
-              <line x1="12" y1="1" x2="12" y2="3" stroke-width="2" stroke-linecap="round"/>
-              <line x1="12" y1="21" x2="12" y2="23" stroke-width="2" stroke-linecap="round"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" stroke-linecap="round"/>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" stroke-linecap="round"/>
-              <line x1="1" y1="12" x2="3" y2="12" stroke-width="2" stroke-linecap="round"/>
-              <line x1="21" y1="12" x2="23" y2="12" stroke-width="2" stroke-linecap="round"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" stroke-linecap="round"/>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <svg id="icon-moon" class="w-3 h-3 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </button>
-
-        <!-- Hamburger (mobile only) -->
-        <button
-          id="menu-toggle"
-          aria-label="Toggle menu"
-          class="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none"
-        >
-          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
-          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
-          <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
-        </button>
       </div>
+
+      <!-- Theme toggle -->
+      <button id="theme-toggle" aria-label="Toggle theme"
+        class="relative w-14 h-7 rounded-full bg-zinc-200 dark:bg-zinc-700 transition-colors duration-200 focus:outline-none">
+        <span class="absolute top-1 left-1 w-5 h-5 rounded-full bg-white dark:bg-zinc-950 shadow transition-transform duration-200 dark:translate-x-7 flex items-center justify-center">
+          <svg class="w-3 h-3 text-amber-500 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5" stroke-width="2"/>
+            <line x1="12" y1="1" x2="12" y2="3" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="21" x2="12" y2="23" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="3" y2="12" stroke-width="2" stroke-linecap="round"/>
+            <line x1="21" y1="12" x2="23" y2="12" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" stroke-linecap="round"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg class="w-3 h-3 text-amber-400 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Hamburger (mobile) -->
+      <button id="menu-toggle" aria-label="Toggle menu"
+        class="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 focus:outline-none">
+        <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
+        <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
+        <span class="block w-5 h-0.5 bg-zinc-600 dark:bg-zinc-400 transition-all"></span>
+      </button>
     </div>
+  </div>
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden sm:hidden border-t border-zinc-100 dark:border-zinc-800">
     <nav class="max-w-3xl mx-auto px-4 py-3 flex flex-col gap-1">
-      {navLinks.map(({ href, label, key }) => (
-        <a
-          href={href}
-          data-i18n={key}
+      {navLinks.map(({ href, label }) => (
+        <a href={href}
           class={`py-2 text-sm transition-colors ${
-            currentPath === href
-              ? 'text-zinc-900 dark:text-zinc-100 font-medium'
-              : 'text-zinc-500 dark:text-zinc-400'
-          }`}
-        >
+            currentPath === href ? 'text-zinc-900 dark:text-zinc-100 font-medium' : 'text-zinc-500 dark:text-zinc-400'
+          }`}>
           {label}
         </a>
       ))}
+      <div class="flex items-center gap-2 pt-2 mt-1 border-t border-zinc-100 dark:border-zinc-800">
+        {(Object.entries(languages) as [Lang, string][]).map(([code]) => (
+          <a href={getLangUrl(code)}
+            class={`px-2 py-1 rounded text-xs font-mono transition-colors uppercase
+              ${code === lang ? 'text-amber-500 dark:text-amber-400 font-bold' : 'text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300'}`}>
+            {langFlags[code]}
+          </a>
+        ))}
+      </div>
     </nav>
   </div>
 </header>
 
 <script>
-  const themeBtn = document.getElementById('theme-toggle');
-  themeBtn?.addEventListener('click', () => {
-    const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
-    html.classList.toggle('dark', !isDark);
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 
-  const menuBtn = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  document.getElementById('menu-toggle')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
   });
 
-  // Language dropdown
   const langBtn = document.getElementById('lang-btn');
   const langDropdown = document.getElementById('lang-dropdown');
   const langChevron = document.getElementById('lang-chevron');
 
-  langBtn?.addEventListener('click', (e) => {
+  langBtn?.addEventListener('click', e => {
     e.stopPropagation();
     langDropdown?.classList.toggle('hidden');
     langChevron?.classList.toggle('rotate-180');
@@ -176,14 +169,5 @@ const currentPath = Astro.url.pathname;
   document.addEventListener('click', () => {
     langDropdown?.classList.add('hidden');
     langChevron?.classList.remove('rotate-180');
-  });
-
-  // Highlight active language option
-  const lang = localStorage.getItem('lang') || 'en';
-  document.querySelectorAll<HTMLElement>('[data-lang-option]').forEach(btn => {
-    const isActive = btn.dataset.langOption === lang;
-    if (isActive) {
-      btn.classList.add('font-semibold', 'text-amber-500', 'dark:text-amber-400');
-    }
   });
 </script>

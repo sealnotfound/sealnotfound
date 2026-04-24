@@ -1,0 +1,46 @@
+---
+import BlogPost from '@/layouts/BlogPost.astro';
+import { getCollection } from 'astro:content';
+import type { Lang } from '@/i18n/index';
+
+export async function getStaticPaths() {
+  const all = await getCollection('blog');
+  const langs = ['en', 'uk', 'de'] as Lang[];
+  const paths = [];
+
+  for (const lang of langs) {
+    const posts = all
+      .filter(p => p.slug.startsWith(`${lang}/`) && !p.data.draft)
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    for (const post of posts) {
+      paths.push({
+        params: { lang, slug: post.slug.replace(`${lang}/`, '') },
+        props: { post, allPosts: posts, lang },
+      });
+    }
+  }
+  return paths;
+}
+
+const { post, allPosts, lang } = Astro.props as { post: any; allPosts: any[]; lang: Lang };
+const { Content } = await post.render();
+
+const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
+const prevPost = allPosts[currentIndex + 1] ?? null;
+const nextPost = allPosts[currentIndex - 1] ?? null;
+const slugBase = (slug: string) => slug.replace(`${lang}/`, '');
+---
+
+<BlogPost
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  tags={post.data.tags}
+  heroImage={post.data.heroImage}
+  lang={lang}
+  prevPost={prevPost ? { slug: `/${lang}/blog/${slugBase(prevPost.slug)}`, title: prevPost.data.title } : null}
+  nextPost={nextPost ? { slug: `/${lang}/blog/${slugBase(nextPost.slug)}`, title: nextPost.data.title } : null}
+>
+  <Content />
+</BlogPost>

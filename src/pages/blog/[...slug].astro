@@ -3,23 +3,23 @@ import BlogPost from '@/layouts/BlogPost.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const all = await getCollection('blog');
+  const posts = all
+    .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
   return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
+    params: { slug: post.slug.replace('ru/', '') },
+    props: { post, allPosts: posts },
   }));
 }
 
-const { post } = Astro.props;
+const { post, allPosts } = Astro.props;
 const { Content } = await post.render();
 
-const allPosts = (await getCollection('blog'))
-  .filter(p => !p.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
 const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
-const prevPost = allPosts[currentIndex + 1] ?? null; // older
-const nextPost = allPosts[currentIndex - 1] ?? null; // newer
+const prevPost = allPosts[currentIndex + 1] ?? null;
+const nextPost = allPosts[currentIndex - 1] ?? null;
 ---
 
 <BlogPost
@@ -28,8 +28,8 @@ const nextPost = allPosts[currentIndex - 1] ?? null; // newer
   pubDate={post.data.pubDate}
   tags={post.data.tags}
   heroImage={post.data.heroImage}
-  prevPost={prevPost ? { slug: prevPost.slug, title: prevPost.data.title } : null}
-  nextPost={nextPost ? { slug: nextPost.slug, title: nextPost.data.title } : null}
+  prevPost={prevPost ? { slug: prevPost.slug.replace('ru/', ''), title: prevPost.data.title } : null}
+  nextPost={nextPost ? { slug: nextPost.slug.replace('ru/', ''), title: nextPost.data.title } : null}
 >
   <Content />
 </BlogPost>

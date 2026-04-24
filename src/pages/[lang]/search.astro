@@ -2,22 +2,28 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { readingTime } from '@/utils/readingTime';
-import { useTranslations, getLangFromUrl } from '@/i18n/index';
+import { useTranslations, type Lang } from '@/i18n/index';
 
-const lang = getLangFromUrl(Astro.url);
+export async function getStaticPaths() {
+  return (['en', 'uk', 'de'] as Lang[]).map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
 const t = useTranslations(lang);
+const base = `/${lang}`;
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+  .filter(p => p.slug.startsWith(`${lang}/`) && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .map(p => ({
-    slug: p.slug.replace('ru/', ''),
+    slug: p.slug.replace(`${lang}/`, ''),
     title: p.data.title,
     description: p.data.description ?? '',
     tags: p.data.tags,
     heroImage: p.data.heroImage ?? '',
     date: p.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
     readTime: readingTime(p.body),
+    base,
   }));
 
 const totalStr = t('search.total', { n: posts.length });
@@ -48,16 +54,15 @@ const filteredStr = t('search.filtered', { n: 0, total: posts.length });
 
   function renderCard(post) {
     const tags = post.tags.length
-      ? `<div class="flex flex-wrap gap-1.5 mb-2">${post.tags.map(tag => `<a href="/tags/${tag}" class="relative z-20 text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">${tag}</a>`).join('')}</div>`
+      ? `<div class="flex flex-wrap gap-1.5 mb-2">${post.tags.map(tag => `<a href="${post.base}/tags/${tag}" class="relative z-20 text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">${tag}</a>`).join('')}</div>`
       : '';
     const image = post.heroImage
       ? `<img src="${post.heroImage}" alt="${post.title.replace(/<[^>]+>/g,'')}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />`
       : `<div class="w-full h-full flex items-center justify-center"><span class="font-mono text-4xl text-zinc-300 dark:text-zinc-600">S</span></div>`;
-    const desc = post.description
-      ? `<p class="text-zinc-500 dark:text-zinc-400 text-sm line-clamp-2">${post.description}</p>` : '';
+    const desc = post.description ? `<p class="text-zinc-500 dark:text-zinc-400 text-sm line-clamp-2">${post.description}</p>` : '';
     return `
       <div class="group relative flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900">
-        <a href="/blog/${post.slug}" class="absolute inset-0 z-10" aria-label="${post.title.replace(/<[^>]+>/g,'')}"></a>
+        <a href="${post.base}/blog/${post.slug}" class="absolute inset-0 z-10" aria-label="${post.title.replace(/<[^>]+>/g,'')}"></a>
         <div class="w-full h-44 overflow-hidden bg-zinc-100 dark:bg-zinc-800">${image}</div>
         <div class="relative p-4 flex flex-col flex-1">
           ${tags}

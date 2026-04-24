@@ -2,19 +2,25 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogCard from '@/components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { useTranslations, getLangFromUrl } from '@/i18n/index';
+import { useTranslations, languages, type Lang } from '@/i18n/index';
 
-const lang = getLangFromUrl(Astro.url);
+export async function getStaticPaths() {
+  const all = await getCollection('blog');
+  const langs = ['en', 'uk', 'de'] as Lang[];
+  return langs.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
 const t = useTranslations(lang);
+const base = `/${lang}`;
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+  .filter(p => p.slug.startsWith(`${lang}/`) && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 ---
 
 <BaseLayout title={t('nav.home')}>
-  <!-- Hero banner -->
   <section class="mb-14 -mx-4 rounded-2xl overflow-hidden" style="
     background-color: #e8548a;
     background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ctext x='8' y='28' font-size='18' opacity='0.25'%3E🌸%3C/text%3E%3Ctext x='44' y='60' font-size='16' opacity='0.2'%3E🌷%3C/text%3E%3Ctext x='2' y='68' font-size='13' opacity='0.18'%3E✿%3C/text%3E%3Ctext x='56' y='22' font-size='14' opacity='0.2'%3E🌸%3C/text%3E%3C/svg%3E&quot;);
@@ -22,8 +28,7 @@ const posts = (await getCollection('blog'))
   ">
     <div class="px-4 py-6 sm:px-8 sm:py-10 flex items-center gap-4 sm:gap-5">
       <div class="shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-white/40 shadow-lg bg-white/20">
-        <img src="/avatars/avatarApril26.jpg" alt="Seal avatar"
-          class="w-full h-full object-cover"
+        <img src="/avatars/avatarApril26.jpg" alt="Seal avatar" class="w-full h-full object-cover"
           onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'font-size:2rem;line-height:5rem;display:block;text-align:center\'>🦭</span>'" />
       </div>
       <div>
@@ -33,17 +38,12 @@ const posts = (await getCollection('blog'))
     </div>
   </section>
 
-  <!-- Social links -->
   <div class="flex flex-col items-center mb-14">
     <p class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest mb-3">{t('home.coming_soon')}</p>
     <div class="flex flex-wrap justify-center gap-3">
       <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
         <svg class="w-4 h-4 text-sky-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.48 14.070l-2.95-.924c-.643-.204-.657-.643.136-.953l11.522-4.44c.535-.194 1.003.13.374.495z"/></svg>
         Telegram channel
-      </a>
-      <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
-        <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.48 14.070l-2.95-.924c-.643-.204-.657-.643.136-.953l11.522-4.44c.535-.194 1.003.13.374.495z"/></svg>
-        Personal DM
       </a>
       <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors text-sm font-medium">
         <svg class="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -61,11 +61,11 @@ const posts = (await getCollection('blog'))
       <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-6">{t('home.recent')}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {posts.map(post => (
-          <BlogCard post={post} href={`/blog/${post.slug.replace('ru/', '')}`} tagBase="/tags/" />
+          <BlogCard post={post} href={`${base}/blog/${post.slug.replace(`${lang}/`, '')}`} tagBase={`${base}/tags/`} />
         ))}
       </div>
       <div class="mt-8">
-        <a href="/blog" class="text-amber-500 dark:text-amber-400 text-sm hover:underline">{t('home.all')}</a>
+        <a href={`${base}/blog`} class="text-amber-500 dark:text-amber-400 text-sm hover:underline">{t('home.all')}</a>
       </div>
     </section>
   )}

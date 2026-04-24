@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { getLangFromUrl, useTranslations, type Lang } from '@/i18n/index';
 
 interface Props {
   title: string;
@@ -7,29 +8,27 @@ interface Props {
   pubDate: Date;
   tags?: string[];
   heroImage?: string;
+  lang?: Lang;
   prevPost?: { slug: string; title: string } | null;
   nextPost?: { slug: string; title: string } | null;
 }
 
-const { title, description, pubDate, tags = [], heroImage, prevPost, nextPost } = Astro.props;
+const { title, description, pubDate, tags = [], heroImage, prevPost, nextPost, lang: propLang } = Astro.props;
+const lang = propLang ?? getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const base = lang === 'ru' ? '' : `/${lang}`;
 
 const plainTitle = title.replace(/<[^>]+>/g, '');
 const formattedDate = pubDate.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+  year: 'numeric', month: 'long', day: 'numeric',
 });
 ---
 
 <BaseLayout title={plainTitle} description={description}>
   <article>
     {heroImage && (
-      <div class="w-full h-64 sm:h-80 rounded-xl overflow-hidden mb-8 -mx-0">
-        <img
-          src={heroImage}
-          alt={title}
-          class="w-full h-full object-cover"
-        />
+      <div class="w-full h-64 sm:h-80 rounded-xl overflow-hidden mb-8">
+        <img src={heroImage} alt={plainTitle} class="w-full h-full object-cover" />
       </div>
     )}
     <header class="mb-10">
@@ -39,8 +38,8 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
           <>
             <span>·</span>
             <div class="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <span class="text-amber-500 dark:text-amber-400">#{tag}</span>
+              {tags.map(tag => (
+                <a href={`${base}/tags/${tag}`} class="text-amber-500 dark:text-amber-400 hover:underline">#{tag}</a>
               ))}
             </div>
           </>
@@ -63,19 +62,19 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     <div class="flex items-start justify-between gap-4">
       <div class="flex-1">
         {prevPost ? (
-          <a href={`/blog/${prevPost.slug}`} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest" data-i18n="post.older">← Older</span>
-            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2">{prevPost.title}</p>
+          <a href={prevPost.slug} class="group block">
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.older')}</span>
+            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={prevPost.title} />
           </a>
         ) : (
-          <a href="/blog" class="text-amber-500 dark:text-amber-400 hover:underline text-sm" data-i18n="post.back">← All articles</a>
+          <a href={`${base}/blog`} class="text-amber-500 dark:text-amber-400 hover:underline text-sm">{t('post.back')}</a>
         )}
       </div>
       <div class="flex-1 text-right">
         {nextPost && (
-          <a href={`/blog/${nextPost.slug}`} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest" data-i18n="post.newer">Newer →</span>
-            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2">{nextPost.title}</p>
+          <a href={nextPost.slug} class="group block">
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.newer')}</span>
+            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={nextPost.title} />
           </a>
         )}
       </div>

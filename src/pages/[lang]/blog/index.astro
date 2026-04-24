@@ -2,13 +2,20 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogCard from '@/components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { useTranslations, getLangFromUrl } from '@/i18n/index';
+import { useTranslations, type Lang } from '@/i18n/index';
 
-const lang = getLangFromUrl(Astro.url);
+export async function getStaticPaths() {
+  const all = await getCollection('blog');
+  const langs = ['en', 'uk', 'de'] as Lang[];
+  return langs.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
 const t = useTranslations(lang);
+const base = `/${lang}`;
 
 const posts = (await getCollection('blog'))
-  .filter(p => p.slug.startsWith('ru/') && !p.data.draft)
+  .filter(p => p.slug.startsWith(`${lang}/`) && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const months = [...new Set(
@@ -26,7 +33,7 @@ const months = [...new Set(
     </button>
     {months.map(month => (
       <button data-month={month}
-        class="filter-btn text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-500 dark:hover:border-zinc-400">
+        class="filter-btn text-xs font-medium px-3 py-1.5 rounded-full border transition-colors border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400">
         {month}
       </button>
     ))}
@@ -37,7 +44,7 @@ const months = [...new Set(
   ) : (
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="cards-grid">
       {posts.map(post => (
-        <BlogCard post={post} href={`/blog/${post.slug.replace('ru/', '')}`} tagBase="/tags/" />
+        <BlogCard post={post} href={`${base}/blog/${post.slug.replace(`${lang}/`, '')}`} tagBase={`${base}/tags/`} />
       ))}
     </div>
   )}

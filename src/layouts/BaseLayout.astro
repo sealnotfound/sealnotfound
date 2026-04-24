@@ -2,37 +2,29 @@
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import '@/styles/global.css';
+import { getLangFromUrl, useTranslations, type Lang } from '@/i18n/index';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Trading articles by Seal' } = Astro.props;
+const { title, description } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={description ?? t('home.bio')} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <title>{title} — Seal</title>
-
-    <!-- Hide Google Translate toolbar -->
-    <style>
-      .goog-te-banner-frame,
-      #goog-gt-tt,
-      .goog-te-balloon-frame,
-      .goog-te-menu-frame { display: none !important; }
-      body { top: 0 !important; }
-      .skiptranslate > iframe { display: none !important; }
-    </style>
-
     <script is:inline>
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
@@ -48,88 +40,5 @@ const { title, description = 'Trading articles by Seal' } = Astro.props;
       <slot />
     </main>
     <Footer />
-
-    <!-- Google Translate hidden widget -->
-    <div id="google_translate_element" style="display:none"></div>
-
-    <script is:inline>
-      // Google Translate callback (must be global before script loads)
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,ru,uk,de',
-          autoDisplay: false,
-        }, 'google_translate_element');
-      }
-
-      // Keep __T and __tFmt for dynamic JS-generated strings (e.g. search count)
-      window.__T = {
-        en: {
-          'search.total': '{n} articles total',
-          'search.filtered': '{n} of {total} articles',
-        },
-        ru: {
-          'search.total': '{n} статей всего',
-          'search.filtered': '{n} из {total} статей',
-        },
-        uk: {
-          'search.total': '{n} статей загалом',
-          'search.filtered': '{n} з {total} статей',
-        },
-        de: {
-          'search.total': '{n} Artikel gesamt',
-          'search.filtered': '{n} von {total} Artikeln',
-        },
-      };
-
-      window.__tFmt = function(key, vars) {
-        var lang = localStorage.getItem('lang') || 'en';
-        var dict = window.__T[lang] || window.__T.en;
-        var str = dict[key] || window.__T.en[key] || key;
-        if (!vars) return str;
-        return str.replace(/{(\w+)}/g, function(_, k) { return vars[k] != null ? vars[k] : ''; });
-      };
-
-      window.__setLang = function(lang) {
-        localStorage.setItem('lang', lang);
-
-        if (lang === 'en') {
-          var expiry = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
-          document.cookie = 'googtrans=; ' + expiry + '; path=/';
-          document.cookie = 'googtrans=; ' + expiry + '; path=/; domain=.' + location.hostname;
-          window.location.reload();
-          return;
-        }
-
-        document.cookie = 'googtrans=/en/' + lang + '; path=/';
-        document.cookie = 'googtrans=/en/' + lang + '; path=/; domain=.' + location.hostname;
-
-        var select = document.querySelector('.goog-te-combo');
-        if (select) {
-          select.value = lang;
-          var evt = document.createEvent('HTMLEvents');
-          evt.initEvent('change', false, true);
-          select.dispatchEvent(evt);
-        } else {
-          window.location.reload();
-        }
-      };
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var lang = localStorage.getItem('lang') || 'en';
-        document.documentElement.lang = lang;
-
-        // Highlight active lang option in dropdown
-        document.querySelectorAll('[data-lang-option]').forEach(function(btn) {
-          var isActive = btn.getAttribute('data-lang-option') === lang;
-          btn.classList.toggle('font-semibold', isActive);
-          btn.classList.toggle('text-amber-500', isActive);
-          btn.classList.toggle('dark:text-amber-400', isActive);
-        });
-      });
-    </script>
-
-    <!-- Load Google Translate async -->
-    <script async src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>
