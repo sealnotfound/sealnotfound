@@ -27,7 +27,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 <BaseLayout title={plainTitle} description={description}>
   <article>
     {heroImage && (
-      <div class="w-full h-64 sm:h-80 rounded-xl overflow-hidden mb-8">
+      <div class="w-full aspect-video rounded-xl overflow-hidden mb-8">
         <img src={heroImage} alt={plainTitle} class="w-full h-full object-cover" />
       </div>
     )}
