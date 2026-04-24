@@ -153,7 +153,24 @@ const navLinks = [
   });
 
   document.getElementById('menu-toggle')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('menu-toggle');
+    const opening = menu?.classList.contains('hidden');
+
+    menu?.classList.toggle('hidden');
+
+    if (toggle) {
+      const spans = toggle.querySelectorAll('span');
+      if (opening) {
+        toggle.classList.replace('flex-col', 'flex-row');
+        toggle.classList.replace('gap-1.5', 'gap-1');
+        spans.forEach(s => { s.classList.replace('w-5', 'w-0.5'); s.classList.replace('h-0.5', 'h-5'); });
+      } else {
+        toggle.classList.replace('flex-row', 'flex-col');
+        toggle.classList.replace('gap-1', 'gap-1.5');
+        spans.forEach(s => { s.classList.replace('w-0.5', 'w-5'); s.classList.replace('h-5', 'h-0.5'); });
+      }
+    }
   });
 
   const langBtn = document.getElementById('lang-btn');
