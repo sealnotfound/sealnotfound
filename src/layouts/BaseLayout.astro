@@ -14,7 +14,7 @@ const { title, description, image } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const canonicalUrl = new URL(Astro.url.pathname, 'https://sealnotfound.com').href;
-const ogImage = image ? new URL(image, 'https://sealnotfound.com').href : 'https://sealnotfound.com/icons/icon-512.png';
+const ogImage = image ? new URL(image, 'https://sealnotfound.com').href : 'https://sealnotfound.com/icons/icon-512.jpg';
 ---
 
 <!doctype html>
@@ -32,8 +32,8 @@ const ogImage = image ? new URL(image, 'https://sealnotfound.com').href : 'https
     <meta name="twitter:title" content={`${title} — Seal`} />
     <meta name="twitter:description" content={description ?? t('home.bio')} />
     <meta name="twitter:image" content={ogImage} />
-    <link rel="icon" type="image/png" href="/icons/icon-512.png" />
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/jpeg" href="/icons/icon-512.jpg" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
