@@ -17,7 +17,7 @@ const base = `/${lang}`;
 const posts = (await getCollection('blog'))
   .filter(p => p.slug.startsWith(`${lang}/`) && !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+  .slice(0, 6);
 ---
 
 <BaseLayout title={t('nav.home')}>
