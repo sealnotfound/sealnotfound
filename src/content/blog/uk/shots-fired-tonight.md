@@ -2,7 +2,7 @@
 title: "«It'll be some Shots Fired tonight»"
 description: "Третя спроба замаху на Трампа, вчитель місяця з рушницею, та дуже зручний збіг із судовою справою про бальний зал."
 pubDate: 2026-04-26
-tags: ["Geopolitics", "USA", "Politics"]
+tags: ["USA", "Politics"]
 heroImage: "/images/shots-fired-tonight.jpg"
 ---
 

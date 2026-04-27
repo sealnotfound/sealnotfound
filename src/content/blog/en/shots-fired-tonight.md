@@ -2,7 +2,7 @@
 title: "«It'll be some Shots Fired tonight»"
 description: "The third assassination attempt on Trump, a Teacher of the Month with a shotgun, and a very convenient coincidence with the ballroom lawsuit."
 pubDate: 2026-04-26
-tags: ["Geopolitics", "USA", "Politics"]
+tags: ["USA", "Politics"]
 heroImage: "/images/shots-fired-tonight.jpg"
 ---
 

@@ -2,7 +2,7 @@
 title: "«It'll be some Shots Fired tonight»"
 description: "Третья попытка покушения на Трампа, учитель с дробовиком и очень удобное совпадение с судебным делом о бальном зале."
 pubDate: 2026-04-26
-tags: ["Geopolitics", "USA", "Politics"]
+tags: ["USA", "Politics"]
 heroImage: "/images/shots-fired-tonight.jpg"
 ---
 
