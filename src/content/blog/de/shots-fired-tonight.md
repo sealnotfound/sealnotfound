@@ -2,7 +2,7 @@
 title: "«It'll be some Shots Fired tonight»"
 description: "Der dritte Anschlagsversuch auf Trump, ein Lehrer des Monats mit einer Schrotflinte und ein sehr bequemer Zufall mit dem Ballsaal-Rechtsstreit."
 pubDate: 2026-04-26
-tags: ["USA", "Politics"]
+tags: ["USA", "Politics", "Trump"]
 heroImage: "/images/shots-fired-tonight.jpg"
 ---
 
