@@ -55,3 +55,8 @@ html.dark .dark\:bg-zinc-900 { background-color: #52525b !important; }
 html.dark .dark\:bg-zinc-800 { background-color: #71717a !important; }
 html.dark .dark\:border-zinc-800 { border-color: #a1a1aa !important; }
 html.dark .dark\:border-zinc-700 { border-color: #71717a !important; }
+
+/* Shift dark mode text to stay visible on lighter backgrounds */
+html.dark .dark\:text-zinc-600 { color: #d4d4d8 !important; }
+html.dark .dark\:text-zinc-500 { color: #e4e4e7 !important; }
+html.dark .dark\:text-zinc-400 { color: #f4f4f5 !important; }
