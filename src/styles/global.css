@@ -49,9 +49,9 @@
 }
 
 /* Shift dark mode backgrounds two steps lighter */
-html.dark body { background-color: #27272a !important; }
-html.dark .dark\:bg-zinc-950 { background-color: #27272a !important; }
-html.dark .dark\:bg-zinc-900 { background-color: #3f3f46 !important; }
-html.dark .dark\:bg-zinc-800 { background-color: #52525b !important; }
-html.dark .dark\:border-zinc-800 { border-color: #71717a !important; }
-html.dark .dark\:border-zinc-700 { border-color: #52525b !important; }
+html.dark body { background-color: #3f3f46 !important; }
+html.dark .dark\:bg-zinc-950 { background-color: #3f3f46 !important; }
+html.dark .dark\:bg-zinc-900 { background-color: #52525b !important; }
+html.dark .dark\:bg-zinc-800 { background-color: #71717a !important; }
+html.dark .dark\:border-zinc-800 { border-color: #a1a1aa !important; }
+html.dark .dark\:border-zinc-700 { border-color: #71717a !important; }
