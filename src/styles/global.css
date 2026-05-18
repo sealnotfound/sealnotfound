@@ -39,11 +39,18 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #09090b;
+    background: #18181b;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #3f3f46;
+    background: #52525b;
     border-radius: 3px;
   }
 }
+
+/* Shift dark mode backgrounds one step lighter */
+.dark .dark\:bg-zinc-950 { background-color: #18181b; }
+.dark .dark\:bg-zinc-900 { background-color: #27272a; }
+.dark .dark\:bg-zinc-800 { background-color: #3f3f46; }
+.dark .dark\:border-zinc-800 { border-color: #52525b; }
+.dark .dark\:border-zinc-700 { border-color: #3f3f46; }
