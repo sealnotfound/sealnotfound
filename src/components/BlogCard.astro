@@ -46,10 +46,10 @@ const plainTitle = post.data.title.replace(/<[^>]+>/g, '');
       <p class="text-zinc-500 dark:text-zinc-400 text-sm line-clamp-2">{post.data.description}</p>
     )}
     <div class="flex items-center justify-between mt-auto pt-3">
-      <p class="text-zinc-400 dark:text-zinc-300 text-xs font-mono">
+      <p class="text-zinc-400 dark:text-zinc-600 text-xs font-mono">
         {post.data.pubDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
       </p>
-      <span class="text-zinc-400 dark:text-zinc-300 text-xs">{readingTime(post.body)}</span>
+      <span class="text-zinc-400 dark:text-zinc-600 text-xs">{readingTime(post.body)}</span>
     </div>
   </div>
 </div>
