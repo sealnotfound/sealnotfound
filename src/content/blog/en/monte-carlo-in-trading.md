@@ -3,7 +3,7 @@ title: "Monte Carlo Method in Trading"
 description: "Building a mathematical model for passing an FTMO One-Step prop account through mass random simulation. Profitability threshold, blow-up probability, and the real number of days."
 pubDate: 2026-06-23
 tags: ["Monte Carlo", "Prop Trading", "Risk Management"]
-heroImage: "/images/monte-carlo-trading-equity.png"
+heroImage: "/images/monte-carlo-trading-equity-en.png"
 ---
 
 The goal of this article is to model a mathematical framework for passing prop accounts. I'll use FTMO One-Step as the base, but this method can run any set of probabilities — the only thing that matters is stating the conditions correctly.
@@ -20,7 +20,7 @@ One run is one attempt to pass the challenge from start to finish. Each day we d
 
 One thing to keep in mind: with this number of runs the estimated blow-up probability fluctuates noticeably from run to run — the event is rare and there are few examples of it. So it's enough to remember one thing: a blow-up is a very rare tail outcome, a fraction of a percent.
 
-![Heatmap of pass probability across the winrate × R:R grid](/images/monte-carlo-trading-heatmap.png)
+![Heatmap of pass probability across the winrate × R:R grid](/images/monte-carlo-trading-heatmap-en.png)
 
 I chose R for the simulation. I wrote a script and got the probability distribution table. Above a certain winrate threshold trading turns positive, and the probability of passing the challenge only grows.
 
@@ -33,11 +33,11 @@ Trading is profitable when **winrate > 1 / (1 + R:R)**:
 
 Only the number of days changes. Everyone can pick which model from here suits them.
 
-![Pass probability by R:R at a 50% winrate](/images/monte-carlo-trading-passrate.png)
+![Pass probability by R:R at a 50% winrate](/images/monte-carlo-trading-passrate-en.png)
 
-![Distribution of trading days to pass](/images/monte-carlo-trading-days.png)
+![Distribution of trading days to pass](/images/monte-carlo-trading-days-en.png)
 
-![60 random challenge runs — equity curves](/images/monte-carlo-trading-equity.png)
+![60 random challenge runs — equity curves](/images/monte-carlo-trading-equity-en.png)
 
 I calculated my minimum worst-case winrate — 50% — and a fixed R:R of 1:2. With these parameters the probability of blowing the account is negligibly small (under 0.05%), provided I respect the chosen limits: 1 take a day, a maximum of 2 stops a day.
 

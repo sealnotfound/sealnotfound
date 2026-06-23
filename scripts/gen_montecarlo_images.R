@@ -59,7 +59,7 @@ p_heat <- ggplot(grid, aes(factor(b), factor(p * 100), fill = pass)) +
   labs(title = "Probability of passing the challenge",
        subtitle = "Monte Carlo, 8000 runs per cell. Winrate x R:R",
        x = "R:R", y = "Winrate, %") + light
-ggsave(file.path(OUT, "monte-carlo-trading-heatmap.png"), p_heat, width = 8, height = 5, dpi = 130, bg = WHITE)
+ggsave(file.path(OUT, "monte-carlo-trading-heatmap-en.png"), p_heat, width = 8, height = 5, dpi = 130, bg = WHITE)
 
 # =====================================================================
 # 2) Pass % by R:R at 50% winrate
@@ -71,7 +71,7 @@ p_pass <- ggplot(g1, aes(b, pass)) +
   geom_text(aes(label = sprintf("%.1f%%", pass)), vjust = -1.2, color = "#18181b", size = 4) +
   ylim(min(g1$pass) - 1, 101) +
   labs(title = "Pass probability by R:R (50% winrate)", x = "R:R", y = "Pass %") + light
-ggsave(file.path(OUT, "monte-carlo-trading-passrate.png"), p_pass, width = 8, height = 4.8, dpi = 130, bg = WHITE)
+ggsave(file.path(OUT, "monte-carlo-trading-passrate-en.png"), p_pass, width = 8, height = 4.8, dpi = 130, bg = WHITE)
 
 # =====================================================================
 # 3) Distribution of trading days to pass (50% / 1:2)
@@ -86,7 +86,7 @@ p_hist <- ggplot(df_h, aes(days)) +
            hjust = 0, vjust = 2, color = amber, fontface = "bold") +
   labs(title = "Trading days to pass (50% winrate, R:R 1:2)",
        x = "Trading days", y = "Frequency") + light
-ggsave(file.path(OUT, "monte-carlo-trading-days.png"), p_hist, width = 8, height = 4.8, dpi = 130, bg = WHITE)
+ggsave(file.path(OUT, "monte-carlo-trading-days-en.png"), p_hist, width = 8, height = 4.8, dpi = 130, bg = WHITE)
 
 # =====================================================================
 # 4) Equity curves (50% / 1:2) — hero
@@ -105,6 +105,6 @@ p_eq <- ggplot(df_p, aes(day, bal, group = id, color = res)) +
   labs(title = "60 random challenge runs (50% winrate, R:R 1:2)",
        subtitle = "Green line — target +20R, red — starting trailing floor -20R",
        x = "Trading day", y = "Balance, R") + light
-ggsave(file.path(OUT, "monte-carlo-trading-equity.png"), p_eq, width = 8, height = 5, dpi = 130, bg = WHITE)
+ggsave(file.path(OUT, "monte-carlo-trading-equity-en.png"), p_eq, width = 8, height = 5, dpi = 130, bg = WHITE)
 
 cat("OK: 4 PNG saved to", normalizePath(OUT), "\n")

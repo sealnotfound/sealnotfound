@@ -3,7 +3,7 @@ title: "Die Monte-Carlo-Methode im Trading"
 description: "Ein mathematisches Modell zum Bestehen eines FTMO-One-Step-Prop-Accounts per massenhafter Zufallssimulation. Profitabilitätsschwelle, Blow-up-Wahrscheinlichkeit und die echte Anzahl der Tage."
 pubDate: 2026-06-23
 tags: ["Monte Carlo", "Prop Trading", "Risk Management"]
-heroImage: "/images/monte-carlo-trading-equity.png"
+heroImage: "/images/monte-carlo-trading-equity-en.png"
 ---
 
 Das Ziel dieses Artikels ist es, ein mathematisches Modell zum Bestehen von Prop-Accounts zu erstellen. Als Grundlage nehme ich FTMO One-Step, aber mit dieser Methode lassen sich beliebige Wahrscheinlichkeiten durchrechnen — entscheidend ist nur, die Bedingungen korrekt zu formulieren.
@@ -20,7 +20,7 @@ Ein Durchlauf ist ein Versuch, die Challenge von Anfang bis Ende zu bestehen. Je
 
 Wichtig zu verstehen: Bei dieser Anzahl an Durchläufen schwankt die geschätzte Blow-up-Wahrscheinlichkeit von Lauf zu Lauf deutlich — das Ereignis ist selten und es gibt nur wenige Beispiele dafür. Es reicht also, sich eines zu merken: Ein Blow-up ist ein sehr seltenes Tail-Ereignis, Bruchteile eines Prozents.
 
-![Heatmap der Bestehenswahrscheinlichkeit über das Raster Winrate × R:R](/images/monte-carlo-trading-heatmap.png)
+![Heatmap der Bestehenswahrscheinlichkeit über das Raster Winrate × R:R](/images/monte-carlo-trading-heatmap-en.png)
 
 Für die Simulation habe ich R gewählt. Ich habe ein Skript geschrieben und die Wahrscheinlichkeitsverteilungstabelle erhalten. Ab einer bestimmten Winrate-Schwelle wird das Trading positiv, und die Wahrscheinlichkeit, die Challenge zu bestehen, steigt nur noch.
 
@@ -33,11 +33,11 @@ Trading ist profitabel, wenn **Winrate > 1 / (1 + R:R)**:
 
 Es ändert sich nur die Anzahl der Tage. Jeder kann selbst wählen, welches Modell von hier zu ihm passt.
 
-![Bestehenswahrscheinlichkeit nach R:R bei einer Winrate von 50 %](/images/monte-carlo-trading-passrate.png)
+![Bestehenswahrscheinlichkeit nach R:R bei einer Winrate von 50 %](/images/monte-carlo-trading-passrate-en.png)
 
-![Verteilung der Handelstage bis zum Bestehen](/images/monte-carlo-trading-days.png)
+![Verteilung der Handelstage bis zum Bestehen](/images/monte-carlo-trading-days-en.png)
 
-![60 zufällige Challenge-Durchläufe — Equity-Kurven](/images/monte-carlo-trading-equity.png)
+![60 zufällige Challenge-Durchläufe — Equity-Kurven](/images/monte-carlo-trading-equity-en.png)
 
 Ich habe meine schlechteste angenommene Winrate berechnet — 50 % — und ein festes R:R von 1:2. Mit diesen Parametern ist die Wahrscheinlichkeit, den Account zu sprengen, verschwindend gering (unter 0,05 %), sofern ich die gewählten Grenzen einhalte: 1 Take pro Tag, maximal 2 Stops pro Tag.
 
