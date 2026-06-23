@@ -3,7 +3,7 @@ title: "You're watching the finger. The hands are elsewhere"
 description: "Musk became the first trillionaire on the SpaceX IPO. I break down the company's fundamentals, why the market paid around two trillion, and how the listing actually hit the exchange — while everyone watched the fireworks."
 pubDate: 2026-06-23
 tags: ["Macro"]
-heroImage: "/images/spacex-ipo-price-en.svg"
+heroImage: "/images/spacex-ipo-misdirection.jpg"
 ---
 
 On June 12, 2026, Elon Musk became the first person in history with a net worth above one trillion dollars. SpaceX listed on the Nasdaq under the ticker SPCX, priced at 135 dollars, closed its first day at 160.95 (+19%), and peaked near 222. A week and a half later the stock trades around 150 — down a third from the high.

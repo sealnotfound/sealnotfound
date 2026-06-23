@@ -3,7 +3,7 @@ title: "Du schaust auf den Finger. Die Hände sind woanders"
 description: "Musk wurde beim SpaceX-Börsengang zum ersten Billionär. Ich analysiere die Fundamentaldaten des Unternehmens, warum der Markt rund zwei Billionen zahlte und wie der Börsengang die Börse tatsächlich traf — während alle auf das Feuerwerk schauten."
 pubDate: 2026-06-23
 tags: ["Macro"]
-heroImage: "/images/spacex-ipo-price-en.svg"
+heroImage: "/images/spacex-ipo-misdirection.jpg"
 ---
 
 Am 12. Juni 2026 wurde Elon Musk zum ersten Menschen der Geschichte mit einem Vermögen über einer Billion Dollar. SpaceX ging an der Nasdaq unter dem Kürzel SPCX an die Börse, wurde zu 135 Dollar platziert, schloss den ersten Tag bei 160,95 (+19%) und erreichte ein Hoch nahe 222. Anderthalb Wochen später handelt die Aktie um 150 — ein Drittel unter dem Hoch.
