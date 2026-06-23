@@ -47,6 +47,6 @@ heroImage: "/images/monte-carlo-trading-equity.png"
 
 Через месяц-два отпишу, как модель отработает в реальных условиях торговли.
 
-\#mathtrading
+\#Mathtrading
 
 © Тюлень

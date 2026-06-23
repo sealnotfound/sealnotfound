@@ -47,6 +47,6 @@ I've picked my model — you can take any of them. I hope this breakdown was use
 
 In a month or two I'll write back on how the model performs under real trading conditions.
 
-\#mathtrading
+\#Mathtrading
 
 © Seal

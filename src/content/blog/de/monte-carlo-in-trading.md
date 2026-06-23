@@ -47,6 +47,6 @@ Mein Modell habe ich gewählt — ihr könnt jedes davon nehmen. Ich hoffe, dies
 
 In ein, zwei Monaten melde ich mich wieder, wie sich das Modell unter realen Handelsbedingungen schlägt.
 
-\#mathtrading
+\#Mathtrading
 
 © Seal
