@@ -94,9 +94,9 @@ function chartRevenue() {
     s += `<text x="${f(cx(i),1)}" y="${f((y(starlink[i]) + YB) / 2 + 4,1)}" font-size="12" fill="#ffffff" text-anchor="middle">$${f(starlink[i],1)}B</text>`;
     s += `<text x="${f(cx(i),1)}" y="${YB + 22}" font-size="13" fill="${C.muted}" text-anchor="middle">${c}</text>`;
   });
-  // legend
-  s += `<rect x="${ML + PW - 200}" y="${MT - 2}" width="12" height="12" fill="${C.blue}"/><text x="${ML + PW - 184}" y="${MT + 9}" font-size="12" fill="${C.muted}">Starlink</text>`;
-  s += `<rect x="${ML + PW - 110}" y="${MT - 2}" width="12" height="12" fill="${C.blueLight}"/><text x="${ML + PW - 94}" y="${MT + 9}" font-size="12" fill="${C.muted}">Launch &amp; other</text>`;
+  // legend in the header band, right-aligned, clear of the bars
+  s += `<rect x="${ML + PW - 205}" y="22" width="12" height="12" fill="${C.blue}"/><text x="${ML + PW - 189}" y="32" font-size="12" fill="${C.muted}">Starlink</text>`;
+  s += `<rect x="${ML + PW - 120}" y="22" width="12" height="12" fill="${C.blueLight}"/><text x="${ML + PW - 104}" y="32" font-size="12" fill="${C.muted}">Launch &amp; other</text>`;
   s += `<text x="${ML}" y="${H - 14}" font-size="11" fill="${C.muted}">Starlink = 61% of 2025 revenue and the company's only operating-profit engine</text>`;
   return s + foot();
 }
@@ -163,8 +163,8 @@ function chartMultiples() {
     s += `<text x="${f(cx(i),1)}" y="${f(y(v) - 8,1)}" font-size="13" font-weight="600" fill="${C.ink}" text-anchor="middle">${v}x</text>`;
     s += `<text x="${f(cx(i),1)}" y="${YB + 22}" font-size="12" fill="${C.muted}" text-anchor="middle">${esc(labels[i])}</text>`;
   });
-  s += `<rect x="${ML + PW - 250}" y="${MT - 2}" width="12" height="12" fill="${C.gray}"/><text x="${ML + PW - 234}" y="${MT + 9}" font-size="12" fill="${C.muted}">Market reference</text>`;
-  s += `<rect x="${ML + PW - 120}" y="${MT - 2}" width="12" height="12" fill="${C.blue}"/><text x="${ML + PW - 104}" y="${MT + 9}" font-size="12" fill="${C.muted}">AI / SpaceX</text>`;
+  s += `<rect x="${ML + PW - 255}" y="22" width="12" height="12" fill="${C.gray}"/><text x="${ML + PW - 239}" y="32" font-size="12" fill="${C.muted}">Market reference</text>`;
+  s += `<rect x="${ML + PW - 120}" y="22" width="12" height="12" fill="${C.blue}"/><text x="${ML + PW - 104}" y="32" font-size="12" fill="${C.muted}">AI / SpaceX</text>`;
   return s + foot();
 }
 
