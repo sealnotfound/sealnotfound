@@ -1,7 +1,7 @@
 ---
-title: "You're watching the finger. The hands are elsewhere"
+title: "«What really happens doesn't worry me, as long as it looks good on paper»"
 description: "Musk became the first trillionaire on the SpaceX IPO. I break down the company's fundamentals, why the market paid around two trillion, and how the listing actually hit the exchange — while everyone watched the fireworks."
-pubDate: 2026-06-23
+pubDate: 2026-06-23T12:00:00
 tags: ["Macro"]
 heroImage: "/images/spacex-ipo-misdirection.jpg"
 ---

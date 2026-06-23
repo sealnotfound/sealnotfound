@@ -1,7 +1,7 @@
 ---
-title: "Du schaust auf den Finger. Die Hände sind woanders"
+title: "«Was wirklich passiert, interessiert mich nicht — Hauptsache, auf dem Papier stimmt alles»"
 description: "Musk wurde beim SpaceX-Börsengang zum ersten Billionär. Ich analysiere die Fundamentaldaten des Unternehmens, warum der Markt rund zwei Billionen zahlte und wie der Börsengang die Börse tatsächlich traf — während alle auf das Feuerwerk schauten."
-pubDate: 2026-06-23
+pubDate: 2026-06-23T12:00:00
 tags: ["Macro"]
 heroImage: "/images/spacex-ipo-misdirection.jpg"
 ---
