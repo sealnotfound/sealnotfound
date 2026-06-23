@@ -2,7 +2,7 @@
 title: "Метод Монте-Карло в трейдингу"
 description: "Моделюю математичну модель проходження проп-акаунта FTMO One-Step через масові випадкові прогони. Поріг прибутковості, ймовірність зливу та реальна кількість днів."
 pubDate: 2026-06-23
-tags: ["Monte Carlo", "Prop Trading", "Risk Management"]
+tags: ["Mathtrading"]
 heroImage: "/images/monte-carlo-trading-equity-en.png"
 ---
 
@@ -46,7 +46,5 @@ heroImage: "/images/monte-carlo-trading-equity-en.png"
 Модель для себе я обрав — ви можете взяти будь-яку з них. Сподіваюся, цей розбір був комусь корисний; мені принаймні був.
 
 Через місяць-два відпишу, як модель відпрацює в реальних умовах торгівлі.
-
-\#Mathtrading
 
 © Тюлень

@@ -2,7 +2,7 @@
 title: "Die Monte-Carlo-Methode im Trading"
 description: "Ein mathematisches Modell zum Bestehen eines FTMO-One-Step-Prop-Accounts per massenhafter Zufallssimulation. Profitabilitätsschwelle, Blow-up-Wahrscheinlichkeit und die echte Anzahl der Tage."
 pubDate: 2026-06-23
-tags: ["Monte Carlo", "Prop Trading", "Risk Management"]
+tags: ["Mathtrading"]
 heroImage: "/images/monte-carlo-trading-equity-en.png"
 ---
 
@@ -46,7 +46,5 @@ Aber diese Charts und das Modell gehen von einem Idealszenario aus. Rechnet man 
 Mein Modell habe ich gewählt — ihr könnt jedes davon nehmen. Ich hoffe, diese Analyse war für jemanden nützlich; für mich war sie es zumindest.
 
 In ein, zwei Monaten melde ich mich wieder, wie sich das Modell unter realen Handelsbedingungen schlägt.
-
-\#Mathtrading
 
 © Seal

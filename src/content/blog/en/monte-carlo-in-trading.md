@@ -2,7 +2,7 @@
 title: "Monte Carlo Method in Trading"
 description: "Building a mathematical model for passing an FTMO One-Step prop account through mass random simulation. Profitability threshold, blow-up probability, and the real number of days."
 pubDate: 2026-06-23
-tags: ["Monte Carlo", "Prop Trading", "Risk Management"]
+tags: ["Mathtrading"]
 heroImage: "/images/monte-carlo-trading-equity-en.png"
 ---
 
@@ -46,7 +46,5 @@ But these charts and the model assume an ideal scenario. Once you run all the po
 I've picked my model — you can take any of them. I hope this breakdown was useful to someone; it was to me, at least.
 
 In a month or two I'll write back on how the model performs under real trading conditions.
-
-\#Mathtrading
 
 © Seal
