@@ -20,6 +20,8 @@ const { Content } = await post.render();
 const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
 const prevPost = allPosts[currentIndex + 1] ?? null;
 const nextPost = allPosts[currentIndex - 1] ?? null;
+const slugBase = (slug: string) => slug.replace('en/', '');
+const postHref = (slug: string) => `/blog/${slugBase(slug)}/`;
 ---
 
 <BlogPost
@@ -29,8 +31,8 @@ const nextPost = allPosts[currentIndex - 1] ?? null;
   tags={post.data.tags}
   heroImage={post.data.heroImage}
   heroImageAlt={post.data.heroImageAlt}
-  prevPost={prevPost ? { slug: prevPost.slug.replace('en/', ''), title: prevPost.data.title } : null}
-  nextPost={nextPost ? { slug: nextPost.slug.replace('en/', ''), title: nextPost.data.title } : null}
+  prevPost={prevPost ? { slug: postHref(prevPost.slug), title: prevPost.data.title } : null}
+  nextPost={nextPost ? { slug: postHref(nextPost.slug), title: nextPost.data.title } : null}
 >
   <Content />
 </BlogPost>
