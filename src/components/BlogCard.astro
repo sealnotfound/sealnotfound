@@ -11,6 +11,7 @@ interface Props {
 
 const { post, href, tagBase, class: className } = Astro.props;
 const plainTitle = post.data.title.replace(/<[^>]+>/g, '');
+const imageAlt = post.data.heroImageAlt ?? plainTitle;
 ---
 
 <div class:list={["group relative flex flex-col h-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors bg-white dark:bg-zinc-900", className]}
@@ -20,7 +21,7 @@ const plainTitle = post.data.title.replace(/<[^>]+>/g, '');
 
   <div class="w-full h-44 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
     {post.data.heroImage ? (
-      <img src={post.data.heroImage} alt={plainTitle}
+      <img src={post.data.heroImage} alt={imageAlt}
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
     ) : (
       <div class="w-full h-full flex items-center justify-center">

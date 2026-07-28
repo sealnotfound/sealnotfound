@@ -38,6 +38,7 @@ const slugBase = (slug: string) => slug.replace(`${lang}/`, '');
   pubDate={post.data.pubDate}
   tags={post.data.tags}
   heroImage={post.data.heroImage}
+  heroImageAlt={post.data.heroImageAlt}
   lang={lang}
   prevPost={prevPost ? { slug: `/${lang}/blog/${slugBase(prevPost.slug)}`, title: prevPost.data.title } : null}
   nextPost={nextPost ? { slug: `/${lang}/blog/${slugBase(nextPost.slug)}`, title: nextPost.data.title } : null}

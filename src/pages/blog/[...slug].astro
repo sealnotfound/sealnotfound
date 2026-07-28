@@ -28,6 +28,7 @@ const nextPost = allPosts[currentIndex - 1] ?? null;
   pubDate={post.data.pubDate}
   tags={post.data.tags}
   heroImage={post.data.heroImage}
+  heroImageAlt={post.data.heroImageAlt}
   prevPost={prevPost ? { slug: prevPost.slug.replace('en/', ''), title: prevPost.data.title } : null}
   nextPost={nextPost ? { slug: nextPost.slug.replace('en/', ''), title: nextPost.data.title } : null}
 >

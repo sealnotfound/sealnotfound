@@ -8,12 +8,13 @@ interface Props {
   pubDate: Date;
   tags?: string[];
   heroImage?: string;
+  heroImageAlt?: string;
   lang?: Lang;
   prevPost?: { slug: string; title: string } | null;
   nextPost?: { slug: string; title: string } | null;
 }
 
-const { title, description, pubDate, tags = [], heroImage, prevPost, nextPost, lang: propLang } = Astro.props;
+const { title, description, pubDate, tags = [], heroImage, heroImageAlt, prevPost, nextPost, lang: propLang } = Astro.props;
 const lang = propLang ?? getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const base = lang === defaultLang ? '' : `/${lang}`;
@@ -28,7 +29,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   <article>
     {heroImage && (
       <div class="w-full rounded-xl overflow-hidden mb-8">
-        <img src={heroImage} alt={plainTitle} class="w-full h-auto" />
+        <img src={heroImage} alt={heroImageAlt ?? plainTitle} class="w-full h-auto" />
       </div>
     )}
     <header class="mb-10">
