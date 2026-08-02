@@ -54,4 +54,68 @@ Zu diesem Zeitpunkt ging es nicht mehr darum, ob Leo mit Blick auf die KI-Entwic
 
 ## Der Deal mit Citadel
 
-Gegen Ende des Monats wurde ein erheblicher Teil des Aktienportfolios in einer einzigen großen Transaktion an Citadel verkauft. Diese Form nennt man Block Trade: Ein großes Paket wird auf einmal an einen einzigen Käufer übergeben, statt Stück für Stück über den offenen
+Gegen Ende des Monats wurde ein erheblicher Teil des Aktienportfolios in einer einzigen großen Transaktion an Citadel verkauft. Diese Form nennt man Block Trade: Ein großes Paket wird auf einmal an einen einzigen Käufer übergeben, statt Stück für Stück über den offenen Markt verkauft zu werden.
+
+Die Quellen widersprechen sich beim Umfang des Deals. Das [Wall Street Journal](https://www.wsj.com/finance/citadel-buys-situational-awarenesss-stock-portfolio-after-big-losses-in-ai-5117159b) berichtet vom Verkauf eines erheblichen Teils des Portfolios. [Axios](https://www.axios.com/2026/07/30/ai-hedge-fund-situational-awareness-citadel) berichtet vom Verkauf sämtlicher börsennotierter Positionen. Leos eigener Brief spricht vom Verkauf eines Teils des öffentlichen Portfolios sowie vom Erhalt vollständig bezahlter, ungehebelter Positionen.
+
+Zu behaupten, Citadel habe den Fonds gekauft, ist daher nicht korrekt. Citadel erwarb weder die Verwaltungsgesellschaft noch Anteile der Partner am Fonds — Gegenstand des Deals waren ausschließlich die Börsenpositionen.
+
+Laut Leos Brief schloss der Fonds alle Short-Positionen, entfernte den Hebel und die Portfoliofinanzierung. Die privaten Positionen, einschließlich Anthropic, blieben erhalten. Nach verfügbaren Informationen wurde Situational Awareness nicht geschlossen; im Brief heißt es, die Arbeit des Fonds mit öffentlichen und privaten Investitionen werde fortgesetzt, allerdings mit geringerem Risiko.
+
+## Wie aus +450% +80% wurden
+
+Der Anstieg und der anschließende Rückgang werden von unterschiedlichen Ausgangssummen berechnet.
+
+Stellen wir uns vor, im Fonds lagen zu Jahresbeginn 100 Dollar. Ein Anstieg um 430% erhöht das Kapital auf 530 Dollar:
+
+<div style="text-align: center;">
+
+**100 × (1 + 4.30) = 530**
+
+</div>
+
+Ein Anstieg um 450% erhöht es auf 550 Dollar:
+
+<div style="text-align: center;">
+
+**100 × (1 + 4.50) = 550**
+
+</div>
+
+Nach einem Rückgang um 67% bleiben davon 33% übrig:
+
+<div style="text-align: center;">
+
+**530 × 0.33 = 174.9**
+
+</div>
+
+oder:
+
+<div style="text-align: center;">
+
+**550 × 0.33 = 181.5**
+
+</div>
+
+![Wie aus +430 bis +450 Prozent rund +80 Prozent wurden](/images/situational-awareness-return-math.svg)
+
+*Quelle der Berechnung: der zugänglich gemachte Brief an die Partner. Die Echtheit des Dokuments wurde nicht unabhängig überprüft; die Zahlen sind vorläufig und ungeprüft.*
+
+Nach dem Einbruch im Juli behielt der Fonds etwa 175 bis 182 Dollar der ursprünglichen 100 Dollar. Die Rendite seit Jahresbeginn blieb im Bereich von +75% bis +82%. Daher stammt die gerundete Angabe von +80% seit Jahresbeginn im Brief an die Partner.
+
+Der Fonds wurde nicht ausgelöscht. Trotzdem: −67% in einem Monat ist keine gewöhnliche Korrektur. Es ist ein schweres Versagen im Risikomanagement — Leo mag bei der Auswahl der Unternehmen richtig gelegen haben, doch Positionsgröße und Hebel nahmen ihm die Möglichkeit, die Erholung einfach in Ruhe abzuwarten.
+
+Die Liquidation betraf Positionen; nach verfügbaren Informationen wurde der Fonds selbst nicht geschlossen. Das Internet vermischte diese beiden unterschiedlichen Ereignisse zu einer griffigen Geschichte vom „Fall eines Genies".
+
+## Statt eines Fazits
+
+Und bitte glaubt nicht all der Desinformation, die euch auf Instagram, TikTok und in Telegram-Kanälen verkauft wird. Eine reißerische Überschrift wird nicht dadurch wahr, dass fünfhundert Leute sie weitergeteilt haben.
+
+Die eigentliche Arbeit eines Traders beginnt nach der Überschrift: die Primärquelle aufsuchen, die Zahlen überprüfen und selbst herausfinden, was tatsächlich passiert ist. In dieser Geschichte reichte es, „Liquidation von Positionen" von „Liquidation des Fonds" zu unterscheiden und die Prozentrechnung korrekt durchzuführen. Der Großteil des „Falls eines Genies" löste sich damit sofort in Luft auf.
+
+Ich hoffe, der Julisturm ist vorbei und der Markt erholt sich im August. Ab Montag bin ich wieder mit voller Berichterstattung zurück und halte euch weiterhin über alle meine Positionen auf dem Laufenden.
+
+Weniger Sensationen auf TikTok, mehr Zahlen im Terminal.
+
+© Seal
