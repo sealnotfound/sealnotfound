@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Худшие месяцы SOXX с момента запуска фонда</title>
+  <desc id="desc">Июль 2026 года: минус 21,2 процента, худший результат с декабря 2002 года.</desc>
+  <rect width="1200" height="675" rx="28" fill="#09090b"/>
+  <text x="72" y="78" fill="#fafafa" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">Худшие месяцы SOXX</text>
+  <text x="72" y="116" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="21">Месячная доходность с запуска фонда, %</text>
+
+  <line x1="360" y1="162" x2="360" y2="567" stroke="#3f3f46" stroke-width="1"/>
+  <line x1="610" y1="162" x2="610" y2="567" stroke="#27272a" stroke-width="1"/>
+  <line x1="860" y1="162" x2="860" y2="567" stroke="#27272a" stroke-width="1"/>
+  <line x1="1110" y1="162" x2="1110" y2="567" stroke="#3f3f46" stroke-width="1"/>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="21" fill="#d4d4d8">
+    <text x="72" y="204">Сентябрь 2001</text>
+    <text x="72" y="266">Декабрь 2002</text>
+    <text x="72" y="328">Сентябрь 2002</text>
+    <text x="72" y="390" fill="#f59e0b" font-weight="700">Июль 2026</text>
+    <text x="72" y="452">Июнь 2002</text>
+    <text x="72" y="514">Ноябрь 2008</text>
+    <text x="72" y="576">Июнь 2022</text>
+  </g>
+
+  <g>
+    <rect x="360" y="177" width="750" height="34" rx="7" fill="#7f1d1d"/>
+    <rect x="360" y="239" width="575" height="34" rx="7" fill="#991b1b"/>
+    <rect x="360" y="301" width="555" height="34" rx="7" fill="#991b1b"/>
+    <rect x="360" y="363" width="530" height="34" rx="7" fill="#f59e0b"/>
+    <rect x="360" y="425" width="498" height="34" rx="7" fill="#b91c1c"/>
+    <rect x="360" y="487" width="473" height="34" rx="7" fill="#b91c1c"/>
+    <rect x="360" y="549" width="445" height="34" rx="7" fill="#b91c1c"/>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="end">
+    <text x="1097" y="201" fill="#fafafa">−30,4%</text>
+    <text x="922" y="263" fill="#fafafa">−23,3%</text>
+    <text x="902" y="325" fill="#fafafa">−22,3%</text>
+    <text x="877" y="387" fill="#18181b">−21,2%</text>
+    <text x="845" y="449" fill="#fafafa">−19,9%</text>
+    <text x="820" y="511" fill="#fafafa">−18,9%</text>
+    <text x="792" y="573" fill="#fafafa">−17,8%</text>
+  </g>
+
+  <text x="72" y="633" fill="#71717a" font-family="Inter, Arial, sans-serif" font-size="16">Источник: ReturnsView, split/dividend-adjusted monthly returns. SOXX запущен 13 июля 2001 года.</text>
+</svg>

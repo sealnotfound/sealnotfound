@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Как доходность Situational Awareness осталась около плюс 80 процентов</title>
+  <desc id="desc">Начальные 100 долларов выросли до 530–550 долларов, затем после падения на 67 процентов осталось 175–182 доллара.</desc>
+  <rect width="1200" height="675" rx="28" fill="#09090b"/>
+
+  <text x="72" y="78" fill="#fafafa" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">Как +430–450% превратились примерно в +80%</text>
+  <text x="72" y="116" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="21">Условный капитал фонда, если 1 января было $100</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="72" y="210" width="255" height="210" rx="20" fill="#18181b" stroke="#3f3f46" stroke-width="2"/>
+    <text x="199.5" y="260" fill="#a1a1aa" font-size="19" text-anchor="middle">1 января</text>
+    <text x="199.5" y="342" fill="#fafafa" font-size="64" font-weight="700" text-anchor="middle">$100</text>
+
+    <path d="M350 315 H448" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+    <path d="M428 295 L448 315 L428 335" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="399" y="275" fill="#f59e0b" font-size="23" font-weight="700" text-anchor="middle">+430–450%</text>
+
+    <rect x="472" y="175" width="255" height="280" rx="20" fill="#292524" stroke="#f59e0b" stroke-width="3"/>
+    <text x="599.5" y="230" fill="#fbbf24" font-size="19" text-anchor="middle">перед июлем</text>
+    <text x="599.5" y="328" fill="#fafafa" font-size="58" font-weight="700" text-anchor="middle">$530–550</text>
+    <text x="599.5" y="384" fill="#a1a1aa" font-size="19" text-anchor="middle">в 5,3–5,5 раза больше</text>
+
+    <path d="M750 315 H848" fill="none" stroke="#ef4444" stroke-width="6" stroke-linecap="round"/>
+    <path d="M828 295 L848 315 L828 335" fill="none" stroke="#ef4444" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="799" y="275" fill="#ef4444" font-size="23" font-weight="700" text-anchor="middle">−67%</text>
+
+    <rect x="872" y="210" width="255" height="210" rx="20" fill="#18181b" stroke="#3f3f46" stroke-width="2"/>
+    <text x="999.5" y="260" fill="#a1a1aa" font-size="19" text-anchor="middle">после июльской просадки</text>
+    <text x="999.5" y="334" fill="#fafafa" font-size="52" font-weight="700" text-anchor="middle">$175–182</text>
+    <text x="999.5" y="382" fill="#f59e0b" font-size="24" font-weight="700" text-anchor="middle">≈ +80% YTD</text>
+  </g>
+
+  <path d="M82 520 H1118" stroke="#27272a" stroke-width="1"/>
+  <text x="72" y="568" fill="#d4d4d8" font-family="Inter, Arial, sans-serif" font-size="20">$530 × 33% = $174,9</text>
+  <text x="600" y="568" fill="#d4d4d8" font-family="Inter, Arial, sans-serif" font-size="20">$550 × 33% = $181,5</text>
+  <text x="72" y="613" fill="#71717a" font-family="Inter, Arial, sans-serif" font-size="15">Источник: предоставленное письмо партнёрам; подлинность независимо не подтверждена.</text>
+  <text x="72" y="638" fill="#71717a" font-family="Inter, Arial, sans-serif" font-size="15">Показатели предварительные и неаудированные.</text>
+</svg>
