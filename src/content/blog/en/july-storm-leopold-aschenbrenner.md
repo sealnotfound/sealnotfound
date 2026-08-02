@@ -68,27 +68,35 @@ The gain and the subsequent drop are calculated off different base amounts.
 
 Imagine the fund started the year with $100. A 430% gain brings the capital up to $530:
 
-$$
-100 \times (1 + 4.30) = 530
-$$
+<div style="text-align: center;">
+
+**100 × (1 + 4.30) = 530**
+
+</div>
 
 A 450% gain brings it up to $550:
 
-$$
-100 \times (1 + 4.50) = 550
-$$
+<div style="text-align: center;">
+
+**100 × (1 + 4.50) = 550**
+
+</div>
 
 After a 67% drop, 33% of that amount remains:
 
-$$
-530 \times 0.33 = 174.9
-$$
+<div style="text-align: center;">
+
+**530 × 0.33 = 174.9**
+
+</div>
 
 or:
 
-$$
-550 \times 0.33 = 181.5
-$$
+<div style="text-align: center;">
+
+**550 × 0.33 = 181.5**
+
+</div>
 
 ![How +430-450 percent turned into roughly +80 percent](/images/situational-awareness-return-math.svg)
 
