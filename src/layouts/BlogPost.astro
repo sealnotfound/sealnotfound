@@ -53,11 +53,22 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 
     {audioSrc && (
       <div class="mb-8 rounded-xl border border-zinc-200 bg-zinc-100 p-3 dark:border-zinc-800 dark:bg-zinc-900">
-        <p class="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">Listen to article</p>
+        <p class="mb-2 text-sm font-medium text-amber-500 dark:text-amber-400">Listen to article</p>
         <audio controls preload="metadata" class="w-full">
           <source src={audioSrc} type="audio/mpeg" />
           Your browser does not support audio playback.
         </audio>
+        <label class="mt-2 flex items-center justify-end gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+          Speed
+          <select data-audio-speed class="rounded border border-zinc-300 bg-white px-1.5 py-1 text-xs text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200">
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.2">1.2×</option>
+            <option value="1.5">1.5×</option>
+            <option value="1.7">1.7×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
       </div>
     )}
 
@@ -94,3 +105,10 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     </div>
   </div>
 </BaseLayout>
+
+{audioSrc && <script is:inline>
+  document.querySelectorAll('[data-audio-speed]').forEach(select => {
+    const audio = select.closest('[data-audio-player]')?.querySelector('audio') ?? select.parentElement?.previousElementSibling;
+    select.addEventListener('change', () => { audio.playbackRate = Number(select.value); });
+  });
+</script>}
