@@ -9,12 +9,13 @@ interface Props {
   tags?: string[];
   heroImage?: string;
   heroImageAlt?: string;
+  enableSpeech?: boolean;
   lang?: Lang;
   prevPost?: { slug: string; title: string } | null;
   nextPost?: { slug: string; title: string } | null;
 }
 
-const { title, description, pubDate, tags = [], heroImage, heroImageAlt, prevPost, nextPost, lang: propLang } = Astro.props;
+const { title, description, pubDate, tags = [], heroImage, heroImageAlt, enableSpeech = false, prevPost, nextPost, lang: propLang } = Astro.props;
 const lang = propLang ?? getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const base = lang === defaultLang ? '' : `/${lang}`;
@@ -50,7 +51,19 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       {description && <p class="mt-3 text-zinc-500 dark:text-zinc-400 text-base sm:text-lg">{description}</p>}
     </header>
 
-    <div class="prose prose-zinc dark:prose-invert max-w-none
+    {enableSpeech && (
+      <div class="mb-8 flex items-center gap-3 rounded-xl border border-zinc-200 bg-zinc-100 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900" data-speech-player>
+        <button type="button" class="rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-zinc-950 hover:bg-amber-400" data-speech-toggle>
+          ▶ Listen to article
+        </button>
+        <button type="button" class="text-sm text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100" data-speech-stop>
+          Stop
+        </button>
+        <span class="text-sm text-zinc-500 dark:text-zinc-400" data-speech-status>Browser voice</span>
+      </div>
+    )}
+
+    <div id={enableSpeech ? 'article-content' : undefined} class="prose prose-zinc dark:prose-invert max-w-none
       prose-headings:font-semibold
       prose-a:text-amber-500 dark:prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline
       prose-code:text-amber-600 dark:prose-code:text-amber-300 prose-code:font-mono
@@ -58,6 +71,49 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <slot />
     </div>
   </article>
+
+  {enableSpeech && (
+    <script is:inline>
+      const player = document.querySelector('[data-speech-player]');
+      const content = document.querySelector('#article-content');
+      const toggle = player?.querySelector('[data-speech-toggle]');
+      const stop = player?.querySelector('[data-speech-stop]');
+      const status = player?.querySelector('[data-speech-status]');
+      let utterance;
+
+      const setStatus = (text) => { if (status) status.textContent = text; };
+      const speak = () => {
+        if (!('speechSynthesis' in window) || !content) {
+          setStatus('Speech is not supported in this browser');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        utterance = new SpeechSynthesisUtterance(content.textContent.trim());
+        utterance.lang = 'en-US';
+        utterance.rate = 0.95;
+        utterance.onstart = () => setStatus('Playing');
+        utterance.onend = () => setStatus('Finished');
+        utterance.onerror = () => setStatus('Could not start speech');
+        window.speechSynthesis.speak(utterance);
+      };
+
+      toggle?.addEventListener('click', () => {
+        if (window.speechSynthesis?.speaking) {
+          window.speechSynthesis.pause();
+          setStatus('Paused');
+        } else if (window.speechSynthesis?.paused) {
+          window.speechSynthesis.resume();
+          setStatus('Playing');
+        } else {
+          speak();
+        }
+      });
+      stop?.addEventListener('click', () => {
+        window.speechSynthesis?.cancel();
+        setStatus('Stopped');
+      });
+    </script>
+  )}
 
   <div class="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
     <div class="flex items-start justify-between gap-4">
