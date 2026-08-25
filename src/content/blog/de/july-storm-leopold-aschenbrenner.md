@@ -10,9 +10,13 @@ draft: false
 
 Der PHLX Semiconductor Index (SOX) beendete das zweite Quartal mit einem Plus von fast 88%, doch schon im Juli legte der Markt den Rückwärtsgang ein. Der SOXX, einer der wichtigsten Branchenindizes, verlor 21,2%. Schlechter war es zuletzt im Dezember 2002.
 
-![Schlechteste Monate für SOXX](/images/soxx-worst-months.svg)
+### Die schlechtesten SOXX-Monate
 
-*Quelle: [ReturnsView](https://returnsview.com/stock/SOXX/). Der Verlauf im Juli lässt sich auch anhand der [historischen SOXX-Kurse](https://stockanalysis.com/etf/soxx/history/) nachvollziehen: 640,76 US-Dollar zum Schluss am 30. Juni und 504,89 US-Dollar am 31. Juli.*
+Monatliche SOXX-Rendite seit Auflegung des Fonds, %.
+
+![Die schlechtesten SOXX-Monate](/images/soxx-worst-months-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Quelle: <a class="!text-zinc-500 dark:!text-zinc-400" href="https://returnsview.com/stock/SOXX/">ReturnsView</a>. Der Verlauf im Juli lässt sich auch anhand der <a class="!text-zinc-500 dark:!text-zinc-400" href="https://stockanalysis.com/etf/soxx/history/">historischen SOXX-Kurse</a> nachvollziehen: 640,76 US-Dollar zum Schluss am 30. Juni und 504,89 US-Dollar am 31. Juli.</small></p>
 
 Mein eigener Juli war auch nicht gerade produktiv: insgesamt nur drei Positionen im ganzen Monat, die ihr im Telegram-Kanal verfolgen konntet, mit einem Endergebnis von +0,5%. Ich wollte nicht der Anzahl wegen handeln.
 

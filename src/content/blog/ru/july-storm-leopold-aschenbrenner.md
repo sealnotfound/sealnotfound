@@ -14,9 +14,9 @@ PHLX Semiconductor Index (SOX) закончил второй квартал ро
 
 Ежемесячная доходность SOXX с момента запуска фонда, %.
 
-![Worst SOXX months](/images/soxx-worst-months-en.svg)
+![Худшие месяцы SOXX](/images/soxx-worst-months-en.svg)
 
-*Источник: [ReturnsView](https://returnsview.com/stock/SOXX/). Динамику июля также можно проверить по [историческим котировкам SOXX](https://stockanalysis.com/etf/soxx/history/): 640,76 доллара на закрытии 30 июня и 504,89 доллара 31 июля.*
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Источник: <a class="!text-zinc-500 dark:!text-zinc-400" href="https://returnsview.com/stock/SOXX/">ReturnsView</a>. Динамику июля также можно проверить по <a class="!text-zinc-500 dark:!text-zinc-400" href="https://stockanalysis.com/etf/soxx/history/">историческим котировкам SOXX</a>: 640,76 доллара на закрытии 30 июня и 504,89 доллара 31 июля.</small></p>
 
 У меня июль тоже вышел не самым продуктивным: всего три позиции за весь месяц, которые вы могли наблюдать в Telegram-канале, и итоговые +0,5%. Торговать ради количества я не стал.
 

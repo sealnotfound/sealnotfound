@@ -10,9 +10,13 @@ draft: false
 
 PHLX Semiconductor Index (SOX) завершив другий квартал зростанням майже на 88%, а вже у липні ринок натиснув кнопку «назад». SOXX, один з головних біржових індикаторів сектору, втратив 21,2%. Гірше було востаннє у грудні 2002 року.
 
-![Найгірші місяці SOXX](/images/soxx-worst-months.svg)
+### Найгірші місяці SOXX
 
-*Джерело: [ReturnsView](https://returnsview.com/stock/SOXX/). Динаміку липня також можна перевірити за [історичними котируваннями SOXX](https://stockanalysis.com/etf/soxx/history/): 640,76 долара на закритті 30 червня та 504,89 долара 31 липня.*
+Місячна дохідність SOXX від моменту запуску фонду, %.
+
+![Найгірші місяці SOXX](/images/soxx-worst-months-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Джерело: <a class="!text-zinc-500 dark:!text-zinc-400" href="https://returnsview.com/stock/SOXX/">ReturnsView</a>. Динаміку липня також можна перевірити за <a class="!text-zinc-500 dark:!text-zinc-400" href="https://stockanalysis.com/etf/soxx/history/">історичними котируваннями SOXX</a>: 640,76 долара на закритті 30 червня та 504,89 долара 31 липня.</small></p>
 
 У мене липень теж вийшов не найпродуктивнішим: усього три позиції за весь місяць, які ви могли спостерігати в Telegram-каналі, і підсумкові +0,5%. Торгувати заради кількості я не став.
 
