@@ -52,7 +52,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     </header>
 
     {audioSrc && (
-      <div class="mb-8 rounded-xl border border-zinc-200 bg-zinc-100 p-3 dark:border-zinc-800 dark:bg-zinc-900">
+      <div class="mb-8 rounded-xl border border-zinc-200 bg-zinc-100 p-3 dark:border-zinc-800 dark:bg-zinc-900" data-audio-player>
         <div class="mb-2 flex items-center justify-between gap-3">
           <p class="text-sm font-medium text-amber-500 dark:text-amber-400">Listen to article</p>
           <label class="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
@@ -110,7 +110,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 
 {audioSrc && <script is:inline>
   document.querySelectorAll('[data-audio-speed]').forEach(select => {
-    const audio = select.closest('[data-audio-player]')?.querySelector('audio') ?? select.parentElement?.previousElementSibling;
-    select.addEventListener('change', () => { audio.playbackRate = Number(select.value); });
+    const audio = select.closest('[data-audio-player]')?.querySelector('audio');
+    if (audio) select.addEventListener('change', () => { audio.playbackRate = Number(select.value); });
   });
 </script>}
