@@ -12,7 +12,7 @@ heroImage: "/images/spacex-ipo-misdirection.jpg"
 
 ### SPCX — перші дні торгів, $
 
-![Шлях акції SPCX у перші дні торгів](/images/spacex-ipo-price-en.svg)
+![Шлях акції SPCX у перші дні торгів](/images/spacex-ipo-price-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Ціна розміщення — $135 · закриття першого дня — $161 (+19%) · пік — близько $222 · відкат — приблизно до $150.</small></p>
 
@@ -34,7 +34,7 @@ Starlink — супутниковий інтернет — приніс 11,4 м�
 
 ### Виторг SpaceX, млрд доларів
 
-![Виторг SpaceX за сегментами: Starlink проти решти](/images/spacex-ipo-revenue-en.svg)
+![Виторг SpaceX за сегментами: Starlink проти решти](/images/spacex-ipo-revenue-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Starlink — 61% виторгу 2025 року та єдине джерело операційного прибутку компанії.</small></p>
 
@@ -48,7 +48,7 @@ Starlink — супутниковий інтернет — приніс 11,4 м�
 
 ### Оцінка SpaceX: закриті раунди → IPO
 
-![Зростання оцінки SpaceX від закритих раундів до IPO](/images/spacex-ipo-valuation-en.svg)
+![Зростання оцінки SpaceX від закритих раундів до IPO](/images/spacex-ipo-valuation-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Приблизно шестикратне зростання за 18 місяців · мультиплікатор IPO — близько 100 річних виторгів.</small></p>
 
@@ -60,7 +60,7 @@ Starlink — супутниковий інтернет — приніс 11,4 м�
 
 ### Космічні акції в день IPO SpaceX, %
 
-![Падіння космічних паперів у день IPO SpaceX](/images/spacex-ipo-sector-en.svg)
+![Падіння космічних паперів у день IPO SpaceX](/images/spacex-ipo-sector-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Перетік капіталу: керуючі продавали сектор, щоб профінансувати головне IPO.</small></p>
 
@@ -78,7 +78,7 @@ Anthropic подала теж конфіденційно, близько 1 че�
 
 ### Мультиплікатор ціна/виторг, разів
 
-![Мультиплікатор ціна/виторг: SpaceX та AI проти норми ринку](/images/spacex-ipo-multiples-en.svg)
+![Мультиплікатор ціна/виторг: SpaceX та AI проти норми ринку](/images/spacex-ipo-multiples-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Порівняння ринкових орієнтирів із мультиплікаторами AI-компаній та SpaceX.</small></p>
 

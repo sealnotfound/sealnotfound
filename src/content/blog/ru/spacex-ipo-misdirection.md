@@ -12,7 +12,7 @@ heroImage: "/images/spacex-ipo-misdirection.jpg"
 
 ### SPCX — первые дни торгов, $
 
-![Путь акции SPCX в первые дни торгов](/images/spacex-ipo-price-en.svg)
+![Путь акции SPCX в первые дни торгов](/images/spacex-ipo-price-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Цена размещения — $135 · закрытие первого дня — $161 (+19%) · пик — около $222 · откат — примерно к $150.</small></p>
 
@@ -34,7 +34,7 @@ Starlink — спутниковый интернет — принёс 11,4 ми�
 
 ### Выручка SpaceX, млрд долларов
 
-![Выручка SpaceX по сегментам: Starlink против остального](/images/spacex-ipo-revenue-en.svg)
+![Выручка SpaceX по сегментам: Starlink против остального](/images/spacex-ipo-revenue-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Starlink — 61% выручки 2025 года и единственный источник операционной прибыли компании.</small></p>
 
@@ -48,7 +48,7 @@ Starlink — спутниковый интернет — принёс 11,4 ми�
 
 ### Оценка SpaceX: закрытые раунды → IPO
 
-![Рост оценки SpaceX от закрытых раундов к IPO](/images/spacex-ipo-valuation-en.svg)
+![Рост оценки SpaceX от закрытых раундов к IPO](/images/spacex-ipo-valuation-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Примерно шестикратный рост за 18 месяцев · мультипликатор IPO — около 100 годовых выручек.</small></p>
 
@@ -60,7 +60,7 @@ Starlink — спутниковый интернет — принёс 11,4 ми�
 
 ### Космические акции в день IPO SpaceX, %
 
-![Падение космических бумаг в день IPO SpaceX](/images/spacex-ipo-sector-en.svg)
+![Падение космических бумаг в день IPO SpaceX](/images/spacex-ipo-sector-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Переток капитала: управляющие продавали сектор, чтобы профинансировать главное IPO.</small></p>
 
@@ -78,7 +78,7 @@ Anthropic подала тоже конфиденциально, около 1 и�
 
 ### Мультипликатор цена/выручка, раз
 
-![Мультипликатор цена/выручка: SpaceX и AI против нормы рынка](/images/spacex-ipo-multiples-en.svg)
+![Мультипликатор цена/выручка: SpaceX и AI против нормы рынка](/images/spacex-ipo-multiples-en.svg?v=2)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Сравнение рыночных ориентиров с мультипликаторами AI-компаний и SpaceX.</small></p>
 
