@@ -64,7 +64,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <div class="flex-1">
         {nextPost ? (
           <a href={nextPost.slug} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.newer')}</span>
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">← {t('post.newer')}</span>
             <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={nextPost.title} />
           </a>
         ) : (
@@ -74,7 +74,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       <div class="flex-1 text-right">
         {prevPost && (
           <a href={prevPost.slug} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.older')}</span>
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.older')} →</span>
             <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={prevPost.title} />
           </a>
         )}
