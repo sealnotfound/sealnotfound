@@ -10,7 +10,11 @@ Am 12. Juni 2026 wurde Elon Musk zum ersten Menschen der Geschichte mit einem Ve
 
 Während alle auf den Finger schauen — auf die Schlagzeile „erster Billionär" und das Feuerwerk des größten Börsengangs der Geschichte —, machen die Hände die eigentliche Arbeit woanders: in der Index-Mechanik, in einem Low-Float-Squeeze und in der Schlange aus OpenAI und Anthropic direkt dahinter. Dieser Artikel handelt davon, wo die Hände sind. Der Reihe nach: woher Musks Vermögen kommt, was hinter der Bewertung von SpaceX steckt, wie sein Börsengang den Markt traf und warum das nur eine Probe ist.
 
+### SPCX — die ersten Handelstage, $
+
 ![Kursverlauf von SPCX in den ersten Handelstagen](/images/spacex-ipo-price-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Emissionspreis — $135 · Schlusskurs am ersten Tag — $161 (+19%) · Hoch — etwa $222 · Rückgang — auf ungefähr $150.</small></p>
 
 ## Musks Vermögen ist eine Neubewertung von Anteilen, kein Geld
 
@@ -28,7 +32,11 @@ Das Startgeschäft (Launch Services) ist das ursprüngliche: Starts für die NAS
 
 Starlink — Satelliten-Internet — brachte 11,4 Milliarden, also 61% des gesamten Umsatzes, und wuchs um 48%. Anfang 2026 hatte der Dienst über 10 Millionen Abonnenten in mehr als 160 Ländern. Es ist ein Abonnement mit wiederkehrendem Umsatz, und genau das erzeugt Gewinn: rund 4,4 Milliarden operativen Gewinn im Jahr. Den gesamten Profit des Konzerns macht die Telekom-Sparte, während die Raketen die kapitalintensive Basis bleiben, die diese Telekom erst möglich macht.
 
+### SpaceX-Umsatz, Mrd. $
+
 ![SpaceX-Umsatz nach Segment: Starlink gegen den Rest](/images/spacex-ipo-revenue-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Starlink = 61 % des Umsatzes 2025 und die einzige operative Gewinnquelle des Unternehmens.</small></p>
 
 Der Wettbewerbsvorteil von SpaceX ist ökonomisch, nicht ingenieurtechnisch. Die Wiederverwendbarkeit der Falcon senkte die Kosten, ein Kilogramm in den Orbit zu bringen, um ein Vielfaches gegenüber der Konkurrenz. Günstige Starts erlauben es, die eigenen Starlink-Satelliten oft und billig hochzubringen, während ein Konkurrent, der Starts am Markt einkauft, eine solche Konstellation nicht rentabel bekommt. Ein geschlossener Kreislauf aus eigenen Raketen, eigenem Netz und eigenem Dienst ist für Rivalen wie Amazon Kuiper oder OneWeb teuer und langsam zu kopieren.
 
@@ -38,7 +46,11 @@ Dabei ist das Unternehmen nach GAAP unprofitabel: ein Nettoverlust von 4,9 Milli
 
 Bei 18,7 Milliarden Umsatz bedeutet eine Bewertung nahe zwei Billionen rund 100 Jahresumsätze. Reife Telekom und Luft- und Raumfahrt handeln zu 2–5 Umsätzen; schnell wachsende Tech-Werte gehen selten über 20–30 hinaus. SpaceX ist so bewertet, als hätte es bereits getan, was es nur verspricht. Vor dem Börsengang selbst blähte sich die Bewertung in geschlossenen Deals rasant auf.
 
+### SpaceX-Bewertung: Privatrunden → Börsengang
+
 ![Anstieg der SpaceX-Bewertung von Privatrunden zum Börsengang](/images/spacex-ipo-valuation-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Etwa sechsmal höher in 18 Monaten · IPO-Multiple von ungefähr dem 100-Fachen des Jahresumsatzes.</small></p>
 
 Klartext: Bei diesem Multiple zahlt der Markt nicht für das heutige Geschäft, sondern für drei Optionen — die globale Dominanz von Starlink, den Eintritt von Starship in den Regelbetrieb und Rüstungsaufträge inmitten der Militarisierung des Weltraums. Zündet auch nur eine voll, rechtfertigt sich das Preisschild im Nachhinein. Wenn nicht, ist es ein Überzahlen für ein Narrativ, und das Drittel Verlust in anderthalb Wochen zeigt, dass der Markt begonnen hat, das abzubauen. Die Risiken, die dieses Preisschild ignoriert: Konzentration (61% des Umsatzes in einem Produkt, wobei der Starlink-ARPU bei der Expansion in ärmere Märkte bereits fällt), regulatorischer Druck auf das Orbital-Spektrum, die Abhängigkeit der ganzen Konstruktion von einer Person und der Anteil an „Profitabilität", der auf nicht zahlungswirksamen Anpassungen beruht.
 
@@ -46,7 +58,11 @@ Klartext: Bei diesem Multiple zahlt der Markt nicht für das heutige Geschäft, 
 
 Die Platzierung zog in wenigen Tagen mehr als 75 Milliarden aus dem Markt — der größte Börsengang der Geschichte. Das Geld erschien nicht aus dem Nichts; es wurde aus anderen Positionen umgeschichtet: Privatanleger kauften SPCX mit Nettokäufen 3,5-mal höher als bei NVDA. Am stärksten fiel der Raumfahrtsektor selbst, weil Fonds und Trader benachbarte Werte abstießen, um in das Hauptereignis zu drängen. Das ist ein klassischer Siphon — ein Riese saugt seinen Sektor-Nachbarn die Liquidität ab.
 
+### Raumfahrtaktien am Tag des SpaceX-Börsengangs, %
+
 ![Sturz der Raumfahrtaktien am Tag des SpaceX-Börsengangs](/images/spacex-ipo-sector-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Kapitalabfluss: Fondsmanager verkauften den Sektor, um den großen Börsengang zu finanzieren.</small></p>
 
 Doch der systemischste Effekt ist die Index-Mechanik. Zum 1. Mai 2026 änderte die Nasdaq ihre Methodik: Ein Unternehmen unter den Top 40 nach Marktkapitalisierung tritt schon nach 15 Handelstagen in den Nasdaq-100 ein, und die Mindestanforderung an den Free Float wurde ganz gestrichen. SpaceX gelangt mit einer Billionen-Kapitalisierung fast sofort in den Index — obwohl nur 3–5% der Aktien im Free Float sind. Passive Fonds (QQQ, Russell-1000-Fonds) müssen die Aktie mit ihrem Indexgewicht halten, und um sie zu kaufen, müssen sie Apple, Microsoft, Nvidia und alle anderen Bestandteile anteilig verkaufen. Das Auftauchen einer einzigen Aktie drückt mechanisch auf die aktuellen Indexführer, ohne jeden Bezug zu deren eigenen Fundamentaldaten.
 
@@ -60,7 +76,11 @@ OpenAI reichte am 8. Juni 2026 vertraulich bei der SEC ein und peilt einen Herbs
 
 Anthropic reichte ebenfalls vertraulich ein, um den 1. Juni 2026, und könnte schon im Oktober an die Börse gehen und OpenAI überholen. Die Series-H-Runde lag bei 65 Milliarden zu einer Bewertung von 965 Milliarden und übertraf OpenAI zum ersten Mal. Laut der Runde selbst überschritt der Run-Rate-Umsatz 47 Milliarden, und das Unternehmen erwartet seinen ersten operativen Gewinn (diese Zahl behandle ich vorsichtiger — sie stammt aus dem Pressematerial der Runde, nicht aus einer Prüfung).
 
+### Kurs-Umsatz-Multiple, x
+
 ![Kurs-Umsatz-Multiple: SpaceX und KI gegen die Marktnorm](/images/spacex-ipo-multiples-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Markt-Referenzmultiples im Vergleich zu den Multiples von KI-Unternehmen und SpaceX.</small></p>
 
 Bei den Multiples ergibt sich dieses Bild: OpenAI rund 35 Umsätze, Anthropic rund 20. Das ist „billiger" als der weltraumtaugliche Wahnsinn von SpaceX, aber auf einer weit defizitäreren Basis. Wenn die beiden folgen, werden sich die Effekte aus dem SpaceX-Fall nicht nur wiederholen — sie überlagern sich und fügen einen neuen hinzu. Eine Serie von Mega-Börsengängen konkurriert um denselben Kapitalpool, und dass SPCX bereits ein Drittel unter dem Hoch liegt, sagt: der Pool ist nicht bodenlos.
 

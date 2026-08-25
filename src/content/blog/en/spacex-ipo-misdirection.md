@@ -10,7 +10,11 @@ On June 12, 2026, Elon Musk became the first person in history with a net worth 
 
 While everyone watches the finger — the "first trillionaire" headline and the fireworks of the biggest IPO in history — the hands are doing the real work elsewhere: in index mechanics, in a low-float squeeze, and in the queue of OpenAI and Anthropic right behind. This article is about where the hands are. Let's take it in order: where Musk's wealth came from, what sits behind SpaceX's valuation, how its IPO hit the market, and why this is only a rehearsal.
 
+### SPCX — first days of trading, $
+
 ![SPCX price path over the first days of trading](/images/spacex-ipo-price-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Priced $135 · 1st-day close $161 (+19%) · peak ~$222 · pullback to ~$150</small></p>
 
 ## Musk's wealth is a revaluation of stakes, not cash
 
@@ -28,7 +32,11 @@ Launch services is the original business: launches for NASA, the Pentagon, and c
 
 Starlink — satellite internet — brought in 11.4 billion, that is 61% of all revenue, and grew 48%. By early 2026 the service had more than 10 million subscribers across 160+ countries. It's a subscription with recurring revenue, and it is what generates profit: around 4.4 billion in operating profit for the year. The telecom arm makes all of the company's profit, while the rockets remain the capital-heavy base that makes that telecom possible.
 
+### SpaceX revenue, $B
+
 ![SpaceX revenue by segment: Starlink versus the rest](/images/spacex-ipo-revenue-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Starlink = 61% of 2025 revenue and the company's only operating-profit engine.</small></p>
 
 SpaceX's competitive edge is economic, not engineering. Falcon's reusability cut the cost of putting a kilogram into orbit by multiples relative to rivals. Cheap launch lets it put up its own Starlink satellites often and cheaply, while a competitor buying launches on the open market can't make such a constellation pay off. A closed loop of its own rockets, own network, and own service is expensive and slow for rivals like Amazon Kuiper or OneWeb to replicate.
 
@@ -38,7 +46,11 @@ Yet on a GAAP basis the company is unprofitable: a net loss of 4.9 billion for 2
 
 At 18.7 billion in revenue, a valuation near two trillion means roughly 100 annual revenues. Mature telecom and aerospace trade at 2–5 revenues; fast-growing tech rarely goes past 20–30. SpaceX is priced as if it has already done what it only promises. Before the IPO itself, the valuation on closed deals was ballooning.
 
+### SpaceX valuation: private rounds → IPO
+
 ![SpaceX valuation rising from private rounds to the IPO](/images/spacex-ipo-valuation-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">~6x in 18 months · IPO multiple ≈ 100x revenue.</small></p>
 
 Bluntly: at that multiple the market is paying not for today's business but for three options — Starlink's global dominance, Starship entering regular service, and defense contracts amid the militarization of space. If even one fires fully, the price tag will be justified in hindsight. If not, this is overpaying for a narrative, and the third lost in a week and a half shows the market has started to unwind it. The risks this price tag ignores: concentration (61% of revenue in one product, with Starlink ARPU already falling as it expands into poorer markets), regulatory pressure on orbital spectrum, the whole structure's dependence on one person, and the share of "profitability" that rests on non-cash adjustments.
 
@@ -46,7 +58,11 @@ Bluntly: at that multiple the market is paying not for today's business but for 
 
 The listing pulled more than 75 billion out of the market in a few days — the biggest IPO in history. The money didn't appear from nowhere; it was shifted out of other positions: retail bought SPCX with net buying 3.5 times higher than NVDA. The space sector itself fell hardest, because funds and traders cut adjacent names to crowd into the headline event. This is a classic siphon — a giant draining liquidity from its sector neighbors.
 
+### Space stocks on SpaceX IPO day, %
+
 ![Space stocks dropping on SpaceX IPO day](/images/spacex-ipo-sector-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Capital siphon: managers sold the sector to fund the headline IPO.</small></p>
 
 But the most systemic effect is index mechanics. Effective May 1, 2026, the Nasdaq changed its methodology: a company in the top 40 by market cap enters the Nasdaq-100 after just 15 trading days, and the minimum free-float requirement was scrapped entirely. SpaceX, at a trillion-dollar cap, enters the index almost immediately — even though only 3–5% of its shares are in free float. Passive funds (QQQ, Russell 1000 funds) must hold the stock at its index weight, and to buy it they're forced to sell Apple, Microsoft, Nvidia, and every other constituent proportionally. The arrival of a single stock mechanically presses on the index's current leaders with no connection to their own fundamentals.
 
@@ -60,7 +76,11 @@ OpenAI filed confidentially with the SEC on June 8, 2026, aiming for a fall list
 
 Anthropic also filed confidentially, around June 1, 2026, and may go public as early as October, leapfrogging OpenAI. Its Series H round was 65 billion at a 965-billion valuation, topping OpenAI for the first time. Per the round itself, run-rate revenue crossed 47 billion, and the company expects its first operating profit (I treat that figure with more caution — it comes from the round's press materials, not an audit).
 
+### Price / sales multiple, x
+
 ![Price/sales multiple: SpaceX and AI versus the market norm](/images/spacex-ipo-multiples-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Market reference multiples compared with AI and SpaceX.</small></p>
 
 On multiples the picture is this: OpenAI around 35 revenues, Anthropic around 20. That's "cheaper" than SpaceX's space-grade insanity, but on a far more loss-making base. When those two follow, the effects from the SpaceX case won't just repeat — they'll stack and add a new one. A series of mega-IPOs competes for the same pool of capital, and the fact that SPCX is already down a third from its peak says the pool isn't bottomless.
 
