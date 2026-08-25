@@ -102,9 +102,13 @@ oder:
 
 </div>
 
-![Wie aus +430 bis +450 Prozent rund +80 Prozent wurden](/images/situational-awareness-return-math.svg)
+### Wie aus +430–450% rund +80% wurden
 
-*Quelle der Berechnung: der zugänglich gemachte Brief an die Partner. Die Echtheit des Dokuments wurde nicht unabhängig überprüft; die Zahlen sind vorläufig und ungeprüft.*
+Das Diagramm zeigt, wie aus einem Startkapital von 100 Dollar vor dem Juli-Einbruch 530–550 Dollar wurden und nach einem Verlust von 67% 175–182 Dollar übrig blieben.
+
+![Wie aus +430 bis +450 Prozent rund +80 Prozent wurden](/images/situational-awareness-return-math-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Quelle der Berechnung: der zugänglich gemachte Brief an die Partner. Die Echtheit des Dokuments wurde nicht unabhängig überprüft; die Zahlen sind vorläufig und ungeprüft.</small></p>
 
 Nach dem Einbruch im Juli behielt der Fonds etwa 175 bis 182 Dollar der ursprünglichen 100 Dollar. Die Rendite seit Jahresbeginn blieb im Bereich von +75% bis +82%. Daher stammt die gerundete Angabe von +80% seit Jahresbeginn im Brief an die Partner.
 

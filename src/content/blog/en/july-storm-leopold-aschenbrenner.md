@@ -102,9 +102,13 @@ or:
 
 </div>
 
-![How +430-450 percent turned into roughly +80 percent](/images/situational-awareness-return-math.svg)
+### How +430–450% became roughly +80%
 
-*Source of the calculation: the letter to partners that was made available. The document's authenticity has not been independently verified; the figures are preliminary and unaudited.*
+The chart shows how a $100 starting capital became $530–550 before the July drawdown, then fell to $175–182 after a 67% loss.
+
+![How +430–450 percent became roughly +80 percent](/images/situational-awareness-return-math-en.svg)
+
+<p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Source of the calculation: the letter to partners that was made available. The document's authenticity has not been independently verified; the figures are preliminary and unaudited.</small></p>
 
 After the July drawdown, the fund retained roughly $175-182 out of its original $100. Year-to-date returns stayed in the +75% to +82% range. Hence the rounded +80% YTD figure cited in the letter to partners.
 
