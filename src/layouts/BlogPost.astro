@@ -62,20 +62,20 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   <div class="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
     <div class="flex items-start justify-between gap-4">
       <div class="flex-1">
-        {prevPost ? (
-          <a href={prevPost.slug} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.older')}</span>
-            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={prevPost.title} />
+        {nextPost ? (
+          <a href={nextPost.slug} class="group block">
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.newer')}</span>
+            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={nextPost.title} />
           </a>
         ) : (
           <a href={`${base}/blog`} class="text-amber-500 dark:text-amber-400 hover:underline text-sm">{t('post.back')}</a>
         )}
       </div>
       <div class="flex-1 text-right">
-        {nextPost && (
-          <a href={nextPost.slug} class="group block">
-            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.newer')}</span>
-            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={nextPost.title} />
+        {prevPost && (
+          <a href={prevPost.slug} class="group block">
+            <span class="text-xs text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">{t('post.older')}</span>
+            <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors mt-1 line-clamp-2" set:html={prevPost.title} />
           </a>
         )}
       </div>
