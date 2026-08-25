@@ -12,7 +12,7 @@ Während alle auf den Finger schauen — auf die Schlagzeile „erster Billionä
 
 ### SPCX — die ersten Handelstage, $
 
-![Kursverlauf von SPCX in den ersten Handelstagen](/images/spacex-ipo-price-en.svg?v=2)
+![Kursverlauf von SPCX in den ersten Handelstagen](/images/spacex-ipo-price-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Emissionspreis — $135 · Schlusskurs am ersten Tag — $161 (+19%) · Hoch — etwa $222 · Rückgang — auf ungefähr $150.</small></p>
 
@@ -34,7 +34,7 @@ Starlink — Satelliten-Internet — brachte 11,4 Milliarden, also 61% des gesam
 
 ### SpaceX-Umsatz, Mrd. $
 
-![SpaceX-Umsatz nach Segment: Starlink gegen den Rest](/images/spacex-ipo-revenue-en.svg?v=2)
+![SpaceX-Umsatz nach Segment: Starlink gegen den Rest](/images/spacex-ipo-revenue-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Starlink = 61 % des Umsatzes 2025 und die einzige operative Gewinnquelle des Unternehmens.</small></p>
 
@@ -48,7 +48,7 @@ Bei 18,7 Milliarden Umsatz bedeutet eine Bewertung nahe zwei Billionen rund 100 
 
 ### SpaceX-Bewertung: Privatrunden → Börsengang
 
-![Anstieg der SpaceX-Bewertung von Privatrunden zum Börsengang](/images/spacex-ipo-valuation-en.svg?v=2)
+![Anstieg der SpaceX-Bewertung von Privatrunden zum Börsengang](/images/spacex-ipo-valuation-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Etwa sechsmal höher in 18 Monaten · IPO-Multiple von ungefähr dem 100-Fachen des Jahresumsatzes.</small></p>
 
@@ -60,7 +60,7 @@ Die Platzierung zog in wenigen Tagen mehr als 75 Milliarden aus dem Markt — de
 
 ### Raumfahrtaktien am Tag des SpaceX-Börsengangs, %
 
-![Sturz der Raumfahrtaktien am Tag des SpaceX-Börsengangs](/images/spacex-ipo-sector-en.svg?v=2)
+![Sturz der Raumfahrtaktien am Tag des SpaceX-Börsengangs](/images/spacex-ipo-sector-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Kapitalabfluss: Fondsmanager verkauften den Sektor, um den großen Börsengang zu finanzieren.</small></p>
 
@@ -78,7 +78,7 @@ Anthropic reichte ebenfalls vertraulich ein, um den 1. Juni 2026, und könnte sc
 
 ### Kurs-Umsatz-Multiple, x
 
-![Kurs-Umsatz-Multiple: SpaceX und KI gegen die Marktnorm](/images/spacex-ipo-multiples-en.svg?v=2)
+![Kurs-Umsatz-Multiple: SpaceX und KI gegen die Marktnorm](/images/spacex-ipo-multiples-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Markt-Referenzmultiples im Vergleich zu den Multiples von KI-Unternehmen und SpaceX.</small></p>
 

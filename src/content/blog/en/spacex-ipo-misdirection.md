@@ -12,7 +12,7 @@ While everyone watches the finger — the "first trillionaire" headline and the 
 
 ### SPCX — first days of trading, $
 
-![SPCX price path over the first days of trading](/images/spacex-ipo-price-en.svg?v=2)
+![SPCX price path over the first days of trading](/images/spacex-ipo-price-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Priced $135 · 1st-day close $161 (+19%) · peak ~$222 · pullback to ~$150</small></p>
 
@@ -34,7 +34,7 @@ Starlink — satellite internet — brought in 11.4 billion, that is 61% of all 
 
 ### SpaceX revenue, $B
 
-![SpaceX revenue by segment: Starlink versus the rest](/images/spacex-ipo-revenue-en.svg?v=2)
+![SpaceX revenue by segment: Starlink versus the rest](/images/spacex-ipo-revenue-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Starlink = 61% of 2025 revenue and the company's only operating-profit engine.</small></p>
 
@@ -48,7 +48,7 @@ At 18.7 billion in revenue, a valuation near two trillion means roughly 100 annu
 
 ### SpaceX valuation: private rounds → IPO
 
-![SpaceX valuation rising from private rounds to the IPO](/images/spacex-ipo-valuation-en.svg?v=2)
+![SpaceX valuation rising from private rounds to the IPO](/images/spacex-ipo-valuation-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">~6x in 18 months · IPO multiple ≈ 100x revenue.</small></p>
 
@@ -60,7 +60,7 @@ The listing pulled more than 75 billion out of the market in a few days — the 
 
 ### Space stocks on SpaceX IPO day, %
 
-![Space stocks dropping on SpaceX IPO day](/images/spacex-ipo-sector-en.svg?v=2)
+![Space stocks dropping on SpaceX IPO day](/images/spacex-ipo-sector-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Capital siphon: managers sold the sector to fund the headline IPO.</small></p>
 
@@ -78,7 +78,7 @@ Anthropic also filed confidentially, around June 1, 2026, and may go public as e
 
 ### Price / sales multiple, x
 
-![Price/sales multiple: SpaceX and AI versus the market norm](/images/spacex-ipo-multiples-en.svg?v=2)
+![Price/sales multiple: SpaceX and AI versus the market norm](/images/spacex-ipo-multiples-en.svg?v=3)
 
 <p><small class="text-sm text-zinc-500 dark:text-zinc-400 italic">Market reference multiples compared with AI and SpaceX.</small></p>
 
