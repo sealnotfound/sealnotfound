@@ -24,6 +24,7 @@ const plainTitle = title.replace(/<[^>]+>/g, '');
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric', month: 'long', day: 'numeric',
 });
+const waveformHeights = [18, 28, 12, 24, 36, 20, 30, 14, 32, 22, 38, 16, 26, 34, 18, 30, 12, 24, 36, 20, 28, 16, 34, 22, 38, 14, 30, 18, 26, 36, 20, 32, 12, 28, 38, 18, 24, 34, 16, 30, 22, 36, 14, 28, 20, 32, 18, 26, 38, 16, 30, 22, 34];
 ---
 
 <BaseLayout title={plainTitle} description={description} image={heroImage}>
@@ -52,12 +53,42 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     </header>
 
     {audioSrc && (
-      <div class="mb-8 rounded-xl border border-zinc-200 bg-zinc-100 p-3 dark:border-zinc-800 dark:bg-zinc-900">
-        <p class="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">Listen to article</p>
-        <audio controls preload="metadata" class="w-full">
-          <source src={audioSrc} type="audio/mpeg" />
-          Your browser does not support audio playback.
-        </audio>
+      <div class="relative mb-8 rounded-2xl border border-[#26374a] bg-[#172231] p-4 text-zinc-100 shadow-lg" data-audio-player>
+        <audio preload="metadata" class="sr-only" src={audioSrc} aria-label="Article audio"></audio>
+        <div class="flex items-center gap-4">
+          <button type="button" data-audio-play aria-label="Play article audio" class="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-sky-500 text-xl text-white transition hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300">
+            <span data-audio-play-icon aria-hidden="true">▶</span>
+          </button>
+          <div class="min-w-0 flex-1">
+            <div class="mb-2 flex flex-wrap items-center gap-x-2 text-sm text-sky-300">
+              <span data-audio-time>00:00 / 00:00</span>
+              <span class="text-slate-500">·</span>
+              <span>2.6 MB</span>
+            </div>
+            <button type="button" data-audio-waveform aria-label="Seek in article audio" class="flex h-10 w-full items-center gap-[2px] overflow-hidden text-left">
+              {waveformHeights.map(height => (
+                <span data-audio-bar class="w-[3px] shrink-0 rounded-full bg-slate-500/70 transition-colors" style={`height:${height}px`} />
+              ))}
+            </button>
+          </div>
+          <div class="flex shrink-0 items-center gap-2">
+            <button type="button" data-audio-mute aria-label="Mute audio" class="hidden text-xl text-sky-300 transition hover:text-white sm:block">🔊</button>
+            <input data-audio-volume aria-label="Volume" type="range" min="0" max="1" step="0.05" value="1" class="hidden w-16 accent-sky-400 sm:block" />
+            <div class="relative">
+              <button type="button" data-audio-speed aria-expanded="false" class="rounded-lg px-2 py-1 text-sm font-medium text-sky-300 transition hover:bg-slate-700 hover:text-white">1.0x</button>
+              <div data-audio-speed-menu hidden class="absolute right-0 top-9 z-10 w-44 rounded-xl border border-slate-600 bg-[#172231] p-2 shadow-xl">
+                {[
+                  ['0.5', 'Slow'], ['1', 'Normal'], ['1.2', 'Medium'],
+                  ['1.5', 'Fast'], ['1.7', 'Very fast'], ['2', 'Super fast'],
+                ].map(([value, label]) => (
+                  <button type="button" data-audio-rate={value} class="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-slate-200 hover:bg-slate-700">
+                    <span>{value}x</span><span class="text-slate-400">{label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )}
 
@@ -94,3 +125,59 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
     </div>
   </div>
 </BaseLayout>
+
+{audioSrc && <script is:inline>
+  const player = document.querySelector('[data-audio-player]');
+  if (player) {
+    const audio = player.querySelector('audio');
+    const play = player.querySelector('[data-audio-play]');
+    const icon = player.querySelector('[data-audio-play-icon]');
+    const time = player.querySelector('[data-audio-time]');
+    const waveform = player.querySelector('[data-audio-waveform]');
+    const bars = [...player.querySelectorAll('[data-audio-bar]')];
+    const speed = player.querySelector('[data-audio-speed]');
+    const menu = player.querySelector('[data-audio-speed-menu]');
+    const mute = player.querySelector('[data-audio-mute]');
+    const volume = player.querySelector('[data-audio-volume]');
+    const formatTime = seconds => {
+      if (!Number.isFinite(seconds)) return '00:00';
+      return `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+    };
+    const update = () => {
+      const progress = audio.duration ? audio.currentTime / audio.duration : 0;
+      time.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+      bars.forEach((bar, index) => bar.classList.toggle('bg-sky-400', index < progress * bars.length));
+    };
+    play.addEventListener('click', async () => {
+      if (audio.paused) await audio.play(); else audio.pause();
+    });
+    audio.addEventListener('play', () => { icon.textContent = '❚❚'; play.setAttribute('aria-label', 'Pause article audio'); });
+    audio.addEventListener('pause', () => { icon.textContent = '▶'; play.setAttribute('aria-label', 'Play article audio'); });
+    audio.addEventListener('timeupdate', update);
+    audio.addEventListener('loadedmetadata', update);
+    audio.addEventListener('ended', update);
+    waveform.addEventListener('click', event => {
+      if (!audio.duration) return;
+      const rect = waveform.getBoundingClientRect();
+      audio.currentTime = ((event.clientX - rect.left) / rect.width) * audio.duration;
+    });
+    speed.addEventListener('click', () => {
+      menu.hidden = !menu.hidden;
+      speed.setAttribute('aria-expanded', String(!menu.hidden));
+    });
+    menu.querySelectorAll('[data-audio-rate]').forEach(option => option.addEventListener('click', () => {
+      audio.playbackRate = Number(option.dataset.audioRate);
+      speed.textContent = `${audio.playbackRate}x`;
+      menu.hidden = true;
+      speed.setAttribute('aria-expanded', 'false');
+    }));
+    mute.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      mute.textContent = audio.muted ? '🔇' : '🔊';
+    });
+    volume.addEventListener('input', () => { audio.volume = Number(volume.value); audio.muted = audio.volume === 0; });
+    document.addEventListener('click', event => {
+      if (!player.contains(event.target)) { menu.hidden = true; speed.setAttribute('aria-expanded', 'false'); }
+    });
+  }
+</script>}
