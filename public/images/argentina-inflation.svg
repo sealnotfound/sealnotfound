@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520">
+  <rect width="1000" height="520" fill="#111"/>
+  <text x="45" y="55" fill="#fff" font-family="Arial" font-size="30">Argentina: inflation shock</text>
+  <text x="45" y="85" fill="#aaa" font-family="Arial" font-size="17">Annual CPI and December 2023 monthly CPI</text>
+  <line x1="120" y1="390" x2="880" y2="390" stroke="#666"/>
+  <rect x="260" y="125" width="180" height="265" fill="#b43b3b"/>
+  <rect x="560" y="315" width="180" height="75" fill="#d07a22"/>
+  <text x="275" y="108" fill="#fff" font-family="Arial" font-size="24">211.4%</text>
+  <text x="585" y="298" fill="#fff" font-family="Arial" font-size="24">25.5%</text>
+  <text x="265" y="425" fill="#ddd" font-family="Arial" font-size="18">2023 annual</text>
+  <text x="590" y="425" fill="#ddd" font-family="Arial" font-size="18">Dec 2023</text>
+  <text x="45" y="480" fill="#888" font-family="Arial" font-size="14">Source: INDEC CPI. Annual and monthly rates measure different periods.</text>
+</svg>

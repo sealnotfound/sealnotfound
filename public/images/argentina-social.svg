@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520">
+  <rect width="1000" height="520" fill="#111"/>
+  <text x="45" y="55" fill="#fff" font-family="Arial" font-size="30">Argentina: labour market and poverty</text>
+  <text x="45" y="85" fill="#aaa" font-family="Arial" font-size="17">Latest comparable official observations</text>
+  <line x1="120" y1="390" x2="880" y2="390" stroke="#666"/>
+  <rect x="240" y="245" width="180" height="145" fill="#d07a22"/>
+  <rect x="580" y="150" width="180" height="240" fill="#b43b3b"/>
+  <text x="275" y="225" fill="#fff" font-family="Arial" font-size="24">7.8%</text>
+  <text x="605" y="130" fill="#fff" font-family="Arial" font-size="24">28.2%</text>
+  <text x="210" y="425" fill="#ddd" font-family="Arial" font-size="18">Unemployment, Q1 2026</text>
+  <text x="570" y="425" fill="#ddd" font-family="Arial" font-size="18">Poverty, H2 2025</text>
+  <text x="45" y="480" fill="#888" font-family="Arial" font-size="14">Source: INDEC EPH and poverty statistics, 31 urban agglomerations.</text>
+</svg>
