@@ -7,25 +7,41 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 const allLangs = Object.keys(languages) as Lang[];
 let languageOptions = Object.entries(languages) as [Lang, string][];
+const postTranslations = new Map<Lang, string>();
 
 const postPath = currentPath.match(/^\/(?:(ru|uk|de)\/)?blog\/([^/]+)\/?$/);
 if (postPath) {
   const slug = postPath[2];
   const posts = await getCollection('blog');
-  const availableLangs = new Set(
+  const currentPost = posts.find(post => {
+    const [postLang, ...postSlugParts] = post.slug.split('/');
+    return !post.data.draft && postLang === lang && postSlugParts.join('/') === slug;
+  });
+
+  if (currentPost) {
+    const translationKey = `${currentPost.data.pubDate.valueOf()}|${currentPost.data.heroImage ?? ''}`;
     posts
       .filter(post => !post.data.draft)
-      .filter(post => post.slug.split('/').slice(1).join('/') === slug)
-      .map(post => post.slug.split('/')[0] as Lang)
-  );
+      .filter(post => `${post.data.pubDate.valueOf()}|${post.data.heroImage ?? ''}` === translationKey)
+      .forEach(post => {
+        const [postLang, ...postSlugParts] = post.slug.split('/');
+        postTranslations.set(postLang as Lang, postSlugParts.join('/'));
+      });
+  }
 
-  if (availableLangs.size > 0) {
-    languageOptions = languageOptions.filter(([code]) => availableLangs.has(code));
+  if (postTranslations.size > 0) {
+    languageOptions = languageOptions.filter(([code]) => postTranslations.has(code));
   }
 }
 
 // Build URL for switching to a target language
 function getLangUrl(targetLang: Lang): string {
+  const targetPostSlug = postTranslations.get(targetLang);
+  if (targetPostSlug) {
+    const targetBase = targetLang === defaultLang ? '' : `/${targetLang}`;
+    return `${targetBase}/blog/${targetPostSlug}`;
+  }
+
   // Detect if current path starts with a lang prefix
   const parts = currentPath.replace(/^\//, '').split('/');
   const hasPrefix = allLangs.includes(parts[0] as Lang) && parts[0] !== defaultLang;
