@@ -118,3 +118,5 @@ My answer is that the direction is broadly right. Argentina could not keep finan
 Deficits and money creation were not the only causes of Argentina's crises. Weak institutions, a difficult debt history, commodity dependence, and distrust of the peso remain. Spending cuts alone cannot solve them.
 
 I consider the direction right, but without stronger real incomes and reserves, the current stabilization will remain temporary.
+
+© Seal

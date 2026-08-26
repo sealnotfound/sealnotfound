@@ -118,3 +118,5 @@ Meine Antwort lautet: Die Richtung ist im Großen und Ganzen richtig. Argentinie
 Defizite und Geldschöpfung waren jedoch nicht die einzigen Ursachen der argentinischen Krisen. Schwache Institutionen, die Schuldenhistorie, Rohstoffabhängigkeit und das Misstrauen gegenüber dem Peso bleiben bestehen. Ausgabenkürzungen allein lösen sie nicht.
 
 Ich halte die Richtung der Reformen für richtig. Ohne höhere Realeinkommen und stärkere Reserven bleibt die Stabilisierung jedoch vorläufig.
+
+© Seal
