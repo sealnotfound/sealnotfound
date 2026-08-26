@@ -31,7 +31,7 @@ const postHref = (slug: string) => `/blog/${slugBase(slug)}/`;
   tags={post.data.tags}
   heroImage={post.data.heroImage}
   heroImageAlt={post.data.heroImageAlt}
-  audioSrc={`/audio/${post.slug}.mp3`}
+  audioSrc={`/audio/${post.slug.replace('en/', '')}-en.mp3`}
   prevPost={prevPost ? { slug: postHref(prevPost.slug), title: prevPost.data.title } : null}
   nextPost={nextPost ? { slug: postHref(nextPost.slug), title: nextPost.data.title } : null}
 >
