@@ -31,7 +31,6 @@ const prevPost = allPosts[currentIndex + 1] ?? null;
 const nextPost = allPosts[currentIndex - 1] ?? null;
 const slugBase = (slug: string) => slug.replace(`${lang}/`, '');
 const postHref = (slug: string) => `/${lang}/blog/${slugBase(slug)}/`;
-const availableAudio = new Set(['ru/argentina-milei', 'uk/argentina-milei', 'de/argentina-milei']);
 ---
 
 <BlogPost
@@ -41,7 +40,7 @@ const availableAudio = new Set(['ru/argentina-milei', 'uk/argentina-milei', 'de/
   tags={post.data.tags}
   heroImage={post.data.heroImage}
   heroImageAlt={post.data.heroImageAlt}
-  audioSrc={availableAudio.has(post.slug) ? `/audio/${post.slug.replace(`${lang}/`, '')}-${lang}.mp3` : undefined}
+  audioSrc={`/audio/${post.slug.replace(`${lang}/`, '')}-${lang}.mp3`}
   lang={lang}
   prevPost={prevPost ? { slug: postHref(prevPost.slug), title: prevPost.data.title } : null}
   nextPost={nextPost ? { slug: postHref(nextPost.slug), title: nextPost.data.title } : null}
