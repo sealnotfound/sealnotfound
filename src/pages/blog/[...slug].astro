@@ -22,6 +22,7 @@ const prevPost = allPosts[currentIndex + 1] ?? null;
 const nextPost = allPosts[currentIndex - 1] ?? null;
 const slugBase = (slug: string) => slug.replace('en/', '');
 const postHref = (slug: string) => `/blog/${slugBase(slug)}/`;
+const availableAudio = new Set(['en/argentina-milei', 'en/spacex-ipo-misdirection']);
 ---
 
 <BlogPost
@@ -31,7 +32,7 @@ const postHref = (slug: string) => `/blog/${slugBase(slug)}/`;
   tags={post.data.tags}
   heroImage={post.data.heroImage}
   heroImageAlt={post.data.heroImageAlt}
-  audioSrc={`/audio/${post.slug.replace('en/', '')}-en.mp3`}
+  audioSrc={availableAudio.has(post.slug) ? `/audio/${post.slug.replace('en/', '')}-en.mp3` : undefined}
   prevPost={prevPost ? { slug: postHref(prevPost.slug), title: prevPost.data.title } : null}
   nextPost={nextPost ? { slug: postHref(nextPost.slug), title: nextPost.data.title } : null}
 >
